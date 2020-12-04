@@ -16,6 +16,8 @@ public class JavaProject {
 		//AkashdeepSingh-470
 		System.out.println("done");
 
+		//ganeshganji-996
+		System.out.println("ganesh done");
 	}
 
 }
