@@ -1,10 +1,11 @@
 /**
  * 
  */
-package javaProject;
 
+package javaProject;
+import javax.swing.*;
 /**
- * @author Kamboj
+ * @author Team
  *
  */
 public class JavaProject {
@@ -18,8 +19,30 @@ public class JavaProject {
 
 		//ganeshganji-996
 		System.out.println("ganesh done");
-		//Siraj
+		//MohammedSirajuddin-654
 		System.out.println("Siraj done as well");
+		//MohammedSirajuddin-654
+		JFrame f = new JFrame();
+		JOptionPane.showMessageDialog(f,"Hello, Welcome to the Bank."); 
+	    f.setVisible(true);  
+		String s = JOptionPane.showInputDialog(f,"Please Enter your choice "
+				+"1.Create New Account"
+				+"2.Existing Account"
+				+"3.Delete Account"
+				+"4.Exit",JOptionPane.QUESTION_MESSAGE);
+		int choice=Integer.parseInt(s);  
+        if(choice>5 || choice<1)
+        {
+        	JOptionPane.showMessageDialog(f,
+        		    "You Have Entered Wrong Choice"
+        			+"",
+        		    "Incorrect Choice", JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showConfirmDialog(f,
+        		    "Do you want to continue?",
+        		    "Confirmation",
+        		    JOptionPane.YES_NO_CANCEL_OPTION);
+        }
+		
 	}
 
 }
