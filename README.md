@@ -1,23 +1,4 @@
 Project 
- 
-Instructor: 	Cryston Heaven 
-Class: 	MAD 3463 
-Due Date: 	On Moodle 
-Percentage of Final Grade: 	35% 
- 
-	INSTRUCTIONS FOR PROJECT 
-●	 
-Read the instructions carefully 
-●	Read the rubric carefully 
-●	Work only within your group 
-●	Submit via Moodle (only 1 of the group submits) 
-●	Only pdf file is accepted 
-
-●	Changes made after the due date will not count 
- 
- 
-TOTAL MARKS:  90 MARKS 
- 
  	 
 Description: 
  
