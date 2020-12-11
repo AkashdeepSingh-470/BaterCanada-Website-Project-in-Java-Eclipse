@@ -42,7 +42,8 @@ public class JavaProject {
         		    "Confirmation",
         		    JOptionPane.YES_NO_CANCEL_OPTION);
         }
-		
+        
+        System.out.println("test");
 	}
 
 }
