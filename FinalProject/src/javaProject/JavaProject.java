@@ -16,6 +16,8 @@ public class JavaProject {
 	public static void main(String[] args) {
 		//AkashdeepSingh-470
 		System.out.println("done");
+		
+		System.out.println("test3"); //AkashdeepSingh-470
 
 		//ganeshganji-996
 		System.out.println("ganesh done");
@@ -44,7 +46,7 @@ public class JavaProject {
         }
         
         System.out.println("test");
-        System.out.println("test2")
+        System.out.println("test2");
+        
 	}
-
 }
