@@ -44,7 +44,7 @@ public class JavaProject {
         }
         
         System.out.println("test");
-        System.out.println("test21")
+        System.out.println("test2")
 	}
 
 }
