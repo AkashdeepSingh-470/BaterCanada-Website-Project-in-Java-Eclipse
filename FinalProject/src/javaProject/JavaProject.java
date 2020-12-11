@@ -24,7 +24,6 @@ public class JavaProject {
 		//MohammedSirajuddin-654
 		JFrame f = new JFrame();
 		JOptionPane.showMessageDialog(f,"Hello, Welcome to the Bank."); 
-	    f.setVisible(true);  
 		String s = JOptionPane.showInputDialog(f,"Please Enter your choice "
 				+"1.Create New Account"
 				+"2.Existing Account"
