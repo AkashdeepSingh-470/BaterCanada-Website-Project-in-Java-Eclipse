@@ -265,7 +265,9 @@ public class User extends functions {
 //MohammedSirajuddin-654
 	
 //ganeshganji-996
-	
+
+	//MohammedSirajuddin-654
+	//MohammedSirajuddin-654
 ArrayList<String> account = new ArrayList<String>(6);
 private Random scan;
 
@@ -497,6 +499,18 @@ public void ExistingUser()
   
 }//MohammedSirajuddin-654
 //MohammedSirajuddin-654
+
+  
+//MohammedSirajuddin-654 --final commit
+private void depositto(String acc2, Float a) {
+	// TODO Auto-generated method stub
+	
+}
+private void withdrawfrom(String acc1, Float a) {
+	// TODO Auto-generated method stub
+	
+}
+//MohammedSirajuddin-654
 private void inquery(String userpass) {
 	// TODO Auto-generated method stub
 	
@@ -532,16 +546,6 @@ private void ElectricityBill1(int units, String name) {
 	
 }
 
-private void depositto(String acc2, Float a) {
-	// TODO Auto-generated method stub
-	
-}
-
-private void withdrawfrom(String acc1, Float a) {
-	// TODO Auto-generated method stub
-	
-}
-
 public void withdraw(String userpass) {
 	// TODO Auto-generated method stub
 	
@@ -552,5 +556,6 @@ public void deposit(String userpass) {
 	
 
 }
+
 }
 
