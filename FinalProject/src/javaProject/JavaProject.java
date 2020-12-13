@@ -37,10 +37,10 @@ public static void main(String[] args) throws IOException
 		JFrame f = new JFrame();
 		JOptionPane.showMessageDialog(f,"Hello, Welcome to the Bank."); 
 		String s = JOptionPane.showInputDialog(f,"Please Enter your choice "
-				+"1.Create New Account"
-				+"2.Existing Account"
-				+"3.Delete Account"
-				+"4.Exit",JOptionPane.QUESTION_MESSAGE);
+				+"\n1.Create New Account"
+				+"\n2.Existing Account"
+				+"\n3.Delete Account"
+				+"\n4.Exit",JOptionPane.QUESTION_MESSAGE);
 		int choice=Integer.parseInt(s);
 		int Userchoice =0;
         if(choice>5 || choice<1)
@@ -72,12 +72,10 @@ public static void main(String[] args) throws IOException
           case 1:
         	  
               U.NewUser();
-              
-           /*   U.ExistingUser();
-              break;*/
+              //U.ExistingUser();
+              break;
           case 2:
-        	  /*
-              U.ExistingUser();*/
+              U.ExistingUser();
               break;
           case 3:
            /*
