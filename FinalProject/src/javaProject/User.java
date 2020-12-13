@@ -494,18 +494,18 @@ public void ExistingUser()
     	System.out.println(e);
     	
     }
-  //MohammedSirajuddin-654
-}//MohammedSirajuddin-654
+  
+}
 //MohammedSirajuddin-654
 private void inquery(String userpass) {
 	// TODO Auto-generated method stub
 	
-}//MohammedSirajuddin-654
+}
 
 private void loandetails(double principal, int year) {
 	// TODO Auto-generated method stub
 	
-}//MohammedSirajuddin-654
+}
 
 private void statement(String userac) {
 	// TODO Auto-generated method stub
