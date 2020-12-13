@@ -6,8 +6,10 @@ package javaProject;
 import java.io.BufferedReader;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -197,6 +199,56 @@ public class User extends functions {
         password=JOptionPane.showInputDialog("Please enter your new password:"
     			+ "Account creation",JOptionPane.OK_CANCEL_OPTION);
         
+        
+      /*  char nm[]=new char[6];
+        Random rnd = new Random();
+       
+        String username;
+        
+    
+        name.get(i).getChars(0,3,nm,0);
+        username = String.valueOf(nm).trim();
+
+        if (username.length() < 2) {
+            username = username + (10000 + rnd.nextInt(90000));
+        } else if (username.length() < 3) {
+            username = username + (1000 + rnd.nextInt(9000));
+        } else {
+            username = username + (100 + rnd.nextInt(900));
+        }
+
+        if (username.contains(" ")) {
+            username = username.replace(" ", "a");
+        }
+
+
+        //contact.getChars(2,6,pin,0);
+        //contact.getChars(5,10,acnumber,0);
+        //pass=String.valueOf(pin).trim();
+        //acnt=String.valueOf(acnumber).trim();
+        char ps[]=new char[6];
+        String password;
+        name.get(i).getChars(3,7,ps,0);
+        password = String.valueOf(nm).trim();
+        if (password.length() < 3) {
+            password = password + (10000 + rnd.nextInt(90000));
+        } else if (password.length() < 3) {
+            password = password + (1000 + rnd.nextInt(9000));
+        } else {
+            password = password+ (100 + rnd.nextInt(900));
+        }
+
+        if (password.contains(" ")) {
+            password = password.replace(" ", "a");
+        }
+        
+       
+      
+       // String password=JOptionPane.showInputDialog("Please enter your new password:"
+    		//	+ "Account creation",JOptionPane.OK_CANCEL_OPTION);
+        */
+        
+
         /*************************************************/
         int acnt;
         do {
@@ -499,6 +551,203 @@ public void ExistingUser()
   
 }//MohammedSirajuddin-654
 //MohammedSirajuddin-654
+
+public void DeleteAccount()
+{
+    String oldFileName = "userdetails.txt";
+    String tmpFileName = "out.txt";
+
+
+	String uname = JOptionPane.showInputDialog("Enter User Name");
+    System.out.println("Enter User Name :");
+ //   String uname=scanner.next();
+
+	String upin = JOptionPane.showInputDialog("Enter Your Password");
+    System.out.println("Enter Your Pin Number :");
+   // int Upin=Integer.parseInt(upin);
+ //  String upin=scanner.next();
+
+    String combo=uname+" "+upin+" ";
+    String data;
+    int cnt=0;
+    String ac=null;
+    String userac=null;
+    BufferedReader ins=null;
+    BufferedWriter outs=null;
+
+    try
+    {
+        ins=new BufferedReader(new FileReader(oldFileName));
+        outs=new BufferedWriter(new FileWriter(tmpFileName));
+
+        while((data=ins.readLine())!=null)
+        {
+
+            if(data.contains(combo))
+            {
+                data.getChars(16,20,account,0);
+                ac=String.valueOf(account).trim();
+
+                cnt++;
+                continue;
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+        userac=uname+" "+ac;
+
+        if(cnt==0)
+        {
+        	JOptionPane.showMessageDialog(null, " You Have Entered Wrong User/Password(Pin)...");
+            System.out.println("\nOops !!! You Have Entered Wrong User/Password(Pin)...");
+            System.out.println("-------------------------------------------------------------");
+        }
+        else
+        {   JOptionPane.showMessageDialog(null, "Account Deleted Successfully..."
+        		+"Thank You"
+        		+"For Banking");
+            System.out.println("\nAccount Deleted Successfully...");
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("Thank You");
+            System.out.println("          For Banking...");
+            System.out.println("-------------------------------------------------------------");
+        }
+
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldFile = new File(oldFileName);
+    oldFile.delete();
+
+
+    File newFile = new File(tmpFileName);
+    newFile.renameTo(oldFile);
+/////////////////////////////////////////////////////////////////////
+    String old="statement.txt";
+    String temp="delete.txt";
+    try
+    {
+        ins=new BufferedReader(new FileReader(old));
+        outs=new BufferedWriter(new FileWriter(temp));
+
+        while((data=ins.readLine())!=null)
+        {
+            if(data.contains(userac))
+            {
+                continue;
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldF = new File(old);
+    oldF.delete();
+
+
+    File newF = new File(temp);
+    newF.renameTo(oldF);
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    String oldFile2="name.txt";
+    String tempFile2="delete.txt";
+    try
+    {
+        ins=new BufferedReader(new FileReader(oldFile2));
+        outs=new BufferedWriter(new FileWriter(tempFile2));
+
+        while((data=ins.readLine())!=null)
+        {
+            if(data.contains(uname))
+            {
+                continue;
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldName = new File(oldFile2);
+    oldName.delete();
+
+
+    File newName = new File(tempFile2);
+    newName.renameTo(oldName);
+
+
+}
+
+
 
   
 //MohammedSirajuddin-654 --final commit
