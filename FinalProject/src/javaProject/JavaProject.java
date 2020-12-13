@@ -3,162 +3,170 @@
  */
 package javaProject;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 
 /**
  * @author Team 
  *
  */
-public class JavaProject {
-	  /*
-	   * 
-	   */
-public static void main(String[] args) throws IOException 
-	      {
+public class JavaProject implements ActionListener 
+{
+	private static JLabel username1;
+	private static JTextField userText1;
+	private static JLabel password1;
+	private static JPasswordField passwordText;
+	private static JButton button;
+	private static JLabel success;
 	
+	private static String userName = "sir911";
+	private static String userpassword = "bob";
 	
+	public static int attempts = 0;
+	public static JFrame frame1;
+	public static JPanel panel1;
 	
-	
-	try 
+	public static void main(String[] args) 
 	{
-	    	  	String userName = "sir911";
-	  	  		String password = "bob";
-	  	  	User U=new User();
+		
+		panel1 = new JPanel();
+		frame1 = new JFrame();
+		frame1.setSize(350,200);
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame1.add(panel1);
+		
+		panel1.setLayout(null);
+		
+		username1 = new JLabel("Username: ");
+		username1.setBounds(10,20,80,25);
+		panel1.add(username1);
+		
+		userText1 = new JTextField(20);
+		userText1.setBounds(100, 20, 165, 25);
+		panel1.add(userText1);
+		
+		password1 = new JLabel("Password: ");
+		password1.setBounds(10,50,80,25);
+		panel1.add(password1);
+		
+		passwordText = new JPasswordField();
+		passwordText.setBounds(100,50,165,25);
+		panel1.add(passwordText);
+		
+		button = new JButton("Login");
+		button.setBounds(10,80,80,25);
+		button.addActionListener(new JavaProject());
+		panel1.add(button);
+		
+		success = new JLabel("");
+		success.setBounds(10,110,300,25);
+		panel1.add(success);
+		
+		frame1.setVisible(true);
 
-		//ganeshganji-996
-		System.out.println("ganesh done");
-		//MohammedSirajuddin-654
-		System.out.println("Siraj done as well");
-		//MohammedSirajuddin-654
-		JFrame f = new JFrame();
-		JOptionPane.showMessageDialog(f,"Hello, Welcome to the Bank."); 
-		String s = JOptionPane.showInputDialog(f,"Please Enter your choice "
-				+"\n1.Create New Account"
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		String user = userText1.getText();
+		System.out.println(user);
+		String password = passwordText.getText();
+		System.out.println(password);
+
+			if (user.equals(userName) && password.equals(userpassword))
+			{
+				success.setText("Login Successful!");
+				frame1.dispose();
+				JOptionPane.showMessageDialog(null, "congrats");
+				try {
+					methodTwo(null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		 else
+		 { 
+			 if(attempts<=2)
+			 {
+				 success.setText("Login Unsuccessful!");
+				 attempts++;
+				 System.out.println(attempts);
+			 }
+			 else 
+			 {
+				 //System.out.println(attempts);
+				frame1.dispose();
+				JOptionPane.showMessageDialog(null, "you have exceeded the given attempts");		 
+		 }	 
+		}	
+	}
+	
+	
+	public static void methodTwo(String[] args) throws IOException 
+	{
+		User U=new User();
+
+		Update Up=new Update();
+
+
+	              
+		JOptionPane.showMessageDialog(null,"     Welcome to Simulation of a Banking System 	 ");
+	{
+		
+	    String s = JOptionPane.showInputDialog(null,"Please Enter your choice"
+	    		+"\n1.Create New Account"
 				+"\n2.Existing Account"
 				+"\n3.Delete Account"
 				+"\n4.Exit",JOptionPane.QUESTION_MESSAGE);
-		int choice=Integer.parseInt(s);
-		int Userchoice =0;
-        if(choice>5 || choice<1)
-        {
-        	JOptionPane.showMessageDialog(f,
-        		    "You Have Entered Wrong Choice"
-        			+"",
-        		    "Incorrect Choice",JOptionPane.ERROR_MESSAGE);
-        	Userchoice=JOptionPane.showConfirmDialog(f,
-        		    "Do you want to continue?",
-        		    "Confirmation",JOptionPane.YES_NO_CANCEL_OPTION);
-        }
-		
-        if(Userchoice == JOptionPane.YES_OPTION)
-        {
-        	methodTwo();
-        }
-        else if (Userchoice == JOptionPane.NO_OPTION)
-        {
-            System.exit(0);
-         }
-         else 
-         {
-        	 System.exit(0);
-         }
-        
-        switch(choice)
-        {
-          case 1:
-        	  
-              U.NewUser();
-              //U.ExistingUser();
-              break;
-          case 2:
-              U.ExistingUser();
-              break;
-          case 3:
-           /*
-              U.DeleteAccount();*/
-              break;
-          case 4:
-        	  JOptionPane.showMessageDialog(null,"Thank You for visting Simulation of a Banking System");
-              break;
-          default:
-        	  System.exit(0);
-        	  break;
-        	  
-        }
-	      }
-    catch(Exception e)
-{
-    	System.out.println(e);
-}
-        
-        
-      //MohammedSirajuddin-654
-        
-        
-	  }
+	    int choice=Integer.parseInt(s);
 
-public static void methodOne(String UserName, String password) throws IOException 
-{
-//Here made two dialog box for taking input from user
-String inputDialog;
-String inputDialog2;
-int attempts = 0; //Initializing this variable
-
-//Here while loop gives only three attempts for user to login
-while(attempts < 3)
- {
-	
-	 //taking input from user through Dialog box
-	 inputDialog = JOptionPane.showInputDialog("Enter your Username",JOptionPane.OK_CANCEL_OPTION);
-	 inputDialog2 = JOptionPane.showInputDialog("Enter your Password",JOptionPane.OK_CANCEL_OPTION);
-	  
-	 
- 
-	 //checking if input userName and password is correct or not
-	if (inputDialog.equals(UserName) && inputDialog2.equals(password))
+	switch(choice)
 	{
-	//displaying login success message to user
-	JOptionPane.showMessageDialog(null, "Login Success");
-	break;
-
+	    case 1:
+	        U.NewUser();
+	        U.ExistingUser();
+	        break;
+	    case 2:
+	    	U.ExistingUser();
+	        break;
+	    case 3:
+	        //U.DeleteAccount();
+	        break;
+	    case 4:
+	  	  JOptionPane.showMessageDialog(null,"You Have Entered Wrong Choice");
+	        break;
+	    default:
+	    
+	    int result = JOptionPane.showConfirmDialog(null,"You Have Entered Wrong Choice"+"\nDo you want to continue?","Confirmation",JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+	    if(result == JOptionPane.YES_OPTION)
+	    {
+	    	/*String userName = "sir911";
+	    	String password = "bob";
+	    	methodOne(userName,password); */ 
+	     }
+	    else if (result == JOptionPane.NO_OPTION)
+	    {
+	        System.exit(0);
+	     }
+	     else 
+	     {
+	    	 System.exit(0);
+	     }
+	    break;
 	}
- else
- {
-	   //message for user if wrong userName and password is entered
-	   JOptionPane.showMessageDialog(null, "Invalid Username or Password Try Again!");
-	   attempts++;  
-	   
- }
- }
-
-
-	  }
-
-public static void methodTwo()
-{
-	JFrame f = new JFrame();
-	String s = JOptionPane.showInputDialog(f,"Please Enter your choice "
-			+"1.Create New Account"
-			+"2.Existing Account"
-			+"3.Delete Account"
-			+"4.Exit",JOptionPane.QUESTION_MESSAGE);
-	int choice=Integer.parseInt(s);
-	int Userchoice =0;
-    if(choice>5 || choice<1)
-    {
-    	JOptionPane.showMessageDialog(f,
-    		    "You Have Entered Wrong Choice"
-    			+"",
-    		    "Incorrect Choice",JOptionPane.ERROR_MESSAGE);
-    	Userchoice=JOptionPane.showConfirmDialog(f,
-    		    "Do you want to continue?",
-    		    "Confirmation",JOptionPane.YES_NO_CANCEL_OPTION);
-    }
+	}
+	}
 }
-}
-//MohammedSirajuddin-654
-//MohammedSirajuddin-654
