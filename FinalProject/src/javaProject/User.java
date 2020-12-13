@@ -432,7 +432,7 @@ public void ExistingUser()
                             break;
                         case 7:
                             ins.close();
-                            inquery(userpass);
+                            inquiry(userpass);
                             break;
                         default :
                         	JOptionPane.showMessageDialog(f,
@@ -502,46 +502,23 @@ public void ExistingUser()
 
   
 //MohammedSirajuddin-654 --final commit
-private void depositto(String acc2, Float a) {
-	// TODO Auto-generated method stub
-	
-}
-private void withdrawfrom(String acc1, Float a) {
-	// TODO Auto-generated method stub
-	
-}
-//MohammedSirajuddin-654
-private void inquery(String userpass) {
+
+public void internetBill(double dataconsumed, String userpass) {
 	// TODO Auto-generated method stub
 	
 }
 
-private void loandetails(double principal, int year) {
+public void mobileBill(int textUsed, double callUsed, String userpass) {
 	// TODO Auto-generated method stub
 	
 }
 
-private void statement(String userac) {
+public void waterBill(int galoonused, String userpass) {
 	// TODO Auto-generated method stub
 	
 }
 
-private void internetBill(double dataconsumed, String userpass) {
-	// TODO Auto-generated method stub
-	
-}
-
-private void mobileBill(int textUsed, double callUsed, String userpass) {
-	// TODO Auto-generated method stub
-	
-}
-
-private void waterBill(int galoonused, String userpass) {
-	// TODO Auto-generated method stub
-	
-}
-
-private void ElectricityBill1(int units, String name) {
+public void ElectricityBill1(int units, String name) {
 	// TODO Auto-generated method stub
 	
 }
