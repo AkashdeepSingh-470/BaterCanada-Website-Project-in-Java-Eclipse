@@ -505,7 +505,7 @@ private void inquery(String userpass) {
 private void loandetails(double principal, int year) {
 	// TODO Auto-generated method stub
 	
-}
+}//MohammedSirajuddin-654
 
 private void statement(String userac) {
 	// TODO Auto-generated method stub
