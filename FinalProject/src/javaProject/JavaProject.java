@@ -36,9 +36,9 @@ public class JavaProject implements ActionListener
 	public static JFrame frame1;
 	public static JPanel panel1;
 	
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException 
 	{
-		
+		/*
 		panel1 = new JPanel();
 		frame1 = new JFrame();
 		frame1.setSize(350,200);
@@ -75,7 +75,8 @@ public class JavaProject implements ActionListener
 		success.setBounds(110,130,300,25);
 		panel1.add(success);
 		
-		frame1.setVisible(true);		
+		frame1.setVisible(true);		*/
+		methodTwo(args);
 
 	}
 

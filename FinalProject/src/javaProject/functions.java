@@ -61,22 +61,22 @@ public class functions {
                         try
                         {
                         	
-                            JOptionPane.showInputDialog(f,"Please Enter Your Amount :");
-                            String dm=scan.next();
+                        	String dm= JOptionPane.showInputDialog(f,"Please Enter Your Amount :");
+                            //String dm=scan.next();
                             damt=Float.parseFloat(dm);
 
                             if(damt<100.0f)
                             {
-                                //JOptionPane.showMessageDialog(f,"\nAmount Should be greater than or equals to Rs. 100...");
+                                
                                 JOptionPane.showMessageDialog(f,"\nAmount Should be greater than or equals to Rs. 100...");
-                                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                                
                             }
                             else
                             {
                                 bal=bal+damt;
-                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
-                                JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully..."+"\nTotal Balance : "+bal);
+                                
+                                
 
                                 String c=String.valueOf(bal);
                                 data=data.replace(b,c);
@@ -91,8 +91,8 @@ public class functions {
                         }
                         catch(NumberFormatException ioe)
                         {
-                            JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                            JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                            JOptionPane.showMessageDialog(f,"\n You Have Entered Wrong Input.","", JOptionPane.ERROR_MESSAGE);
+                            
                         }
 
                     }
@@ -104,8 +104,8 @@ public class functions {
             }
             catch(InputMismatchException e)
             {
-                JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+            	JOptionPane.showMessageDialog(f,"\n You Have Entered Wrong Input.","", JOptionPane.ERROR_MESSAGE);
+                
             }
             catch (Exception e)
             {
@@ -175,27 +175,26 @@ public class functions {
 
                         try
                         {
-                            JOptionPane.showInputDialog(f,"Enter your Withdrawal Amount :");
-                            String wt=scan.next();
+                        	String wt=JOptionPane.showInputDialog(f,"Enter your Withdrawal Amount :");
+                            //String wt=scan.next();
                             wamt=Float.parseFloat(wt);
                             float less=bal-wamt;
 
                             if(wamt<100.0f)
                             {
-                                JOptionPane.showMessageDialog(f,"\nWithrawal Should be greater than or equals to Rs.100...");
-                                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                                JOptionPane.showMessageDialog(f,"\n Withrawal Should be greater than or equals to Rs.100...","Error", JOptionPane.ERROR_MESSAGE);
+                                
                             }
                             else if(less<1000.0f)
                             {
-                                JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
-                                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                                JOptionPane.showMessageDialog(f,"\nInsufficient Balance...","Error", JOptionPane.ERROR_MESSAGE);
+                                
                             }
                             else
                             {
                                 bal=bal-wamt;
-                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
-                                JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...","Transaction Completed", JOptionPane.INFORMATION_MESSAGE);
+                                
                                 String c=String.valueOf(bal);
 
                                 data=data.replace(b,c);
@@ -212,8 +211,8 @@ public class functions {
                         }
                         catch(NumberFormatException eoi)
                         {
-                            JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                            JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                            JOptionPane.showMessageDialog(f,"\n You Have Entered Wrong Input.","Error", JOptionPane.ERROR_MESSAGE);
+                            
 
                         }
 
@@ -225,8 +224,8 @@ public class functions {
             }
             catch(InputMismatchException e)
             {
-                JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...","Error", JOptionPane.ERROR_MESSAGE);
+                
             }
             catch(Exception e){}
             finally
@@ -277,8 +276,8 @@ public class functions {
                         data.getChars(40,l-1,fbal,0);
                         String b=String.valueOf(fbal).trim();
                         bal=Float.parseFloat(b);
-                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal,"Total Balance", JOptionPane.INFORMATION_MESSAGE);
+                       
                         break;
                     }
                 }
@@ -298,22 +297,23 @@ public class functions {
                 BufferedReader ins=new BufferedReader(new FileReader("statement.txt"));
                 JOptionPane.showMessageDialog(f,"User |"+" A/c No. |"+" Transactions |"+" Total Bal. "+"|  Date & Time ");
                 JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
-                System.out.println();
+                
                 while((data=ins.readLine())!=null)
                 {
 
                     if(data.contains(nmacnt))
                     {
                         System.out.println(data);
-
+                        JOptionPane.showMessageDialog(f,"\n Data : "+data,"Statement", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
-                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                
                 ins.close();
             }
             catch(Exception e){}
         }
 
+        
     public void depositto(String nmpass, float damt)
     {
         String oldFileName = "userdetails.txt";
