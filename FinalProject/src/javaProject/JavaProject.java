@@ -42,6 +42,8 @@ public class JavaProject implements ActionListener
 		panel1 = new JPanel();
 		frame1 = new JFrame();
 		frame1.setSize(350,200);
+		frame1.setLocationRelativeTo(null); 
+		frame1.setTitle("Admin Login");
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame1.add(panel1);
@@ -49,31 +51,31 @@ public class JavaProject implements ActionListener
 		panel1.setLayout(null);
 		
 		username1 = new JLabel("Username: ");
-		username1.setBounds(10,20,80,25);
+		username1.setBounds(50,20,80,25);
 		panel1.add(username1);
 		
 		userText1 = new JTextField(20);
-		userText1.setBounds(100, 20, 165, 25);
+		userText1.setBounds(140, 20, 165, 25);
 		panel1.add(userText1);
 		
 		password1 = new JLabel("Password: ");
-		password1.setBounds(10,50,80,25);
+		password1.setBounds(50,50,80,25);
 		panel1.add(password1);
 		
 		passwordText = new JPasswordField();
-		passwordText.setBounds(100,50,165,25);
+		passwordText.setBounds(140,50,165,25);
 		panel1.add(passwordText);
 		
 		button = new JButton("Login");
-		button.setBounds(10,80,80,25);
+		button.setBounds(80,100,180,25);
 		button.addActionListener(new JavaProject());
 		panel1.add(button);
 		
 		success = new JLabel("");
-		success.setBounds(10,110,300,25);
+		success.setBounds(110,130,300,25);
 		panel1.add(success);
 		
-		frame1.setVisible(true);
+		frame1.setVisible(true);		
 
 	}
 
@@ -109,7 +111,7 @@ public class JavaProject implements ActionListener
 			 {
 				 //System.out.println(attempts);
 				frame1.dispose();
-				JOptionPane.showMessageDialog(null, "you have exceeded the given attempts");		 
+				JOptionPane.showMessageDialog(null, "You have exceeded the given attempts"+"\nPlease come back after some time.");		 
 		 }	 
 		}	
 	}
@@ -143,16 +145,17 @@ public class JavaProject implements ActionListener
 	    	U.ExistingUser();
 	        break;
 	    case 3:
-	        //U.DeleteAccount();
+	        U.DeleteAccount();
 	        break;
 	    case 4:
-	  	  JOptionPane.showMessageDialog(null,"You Have Entered Wrong Choice");
-	        break;
+	  	  JOptionPane.showMessageDialog(null,"Goodbye");
+	  	  System.exit(0);
 	    default:
 	    
 	    int result = JOptionPane.showConfirmDialog(null,"You Have Entered Wrong Choice"+"\nDo you want to continue?","Confirmation",JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
 	    if(result == JOptionPane.YES_OPTION)
 	    {
+	    	main(args);
 	    	/*String userName = "sir911";
 	    	String password = "bob";
 	    	methodOne(userName,password); */ 
