@@ -540,8 +540,555 @@ public class functions {
         JOptionPane.showMessageDialog(f,"EMI : " + p);
     } 
     
-}
+
 
 //Amanurrahmankhan551
+//GaneshGanji-996
 
+public void ElectricityBill1(int Units,String nmpass) {
+
+    float Amount, Sur_Charge, Total_Amount;
+
+    if (Units < 50) {
+        Amount = (float) (Units * 2.60);
+        Sur_Charge = 25;
+    } else if (Units <= 100) {
+        // For the First Fifty Units Charge = 130 (50 * 2.60)
+        // Next, we are removing those 50 units from total units
+        Amount = (float) (130 + ((Units - 50) * 3.25));
+        Sur_Charge = 35;
+    } else if (Units <= 200) {
+        // First Fifty Units charge = 130, and 50 - 100 is 162.50 (50 * 3.25)
+        // Next, we are removing those 100 units from total units
+        Amount = (float) (130 + 162.50 + ((Units - 100) * 5.26));
+        Sur_Charge = 45;
+    } else {
+  		/* First Fifty Units = 130, 50 - 100 is 162.50,
+  		 and 100 - 200 is 526 (100 * 5.65)
+  		Next, we are removing those 200 units from total units */
+        Amount = (float) (130 + 162.50 + 526 + ((Units - 200) * 7.75));
+        Sur_Charge = 55;
+    }
+
+    Total_Amount = Amount + Sur_Charge;
+    JOptionPane.showMessageDialog(f,"\n Electricity Bill  =  " + Total_Amount);
+    String oldFileName = "userdetails.txt";
+    String tmpFileName = "out.txt";
+    BufferedReader ins=null;
+    BufferedWriter outs=null;
+    try
+    {
+        ins=new BufferedReader(new FileReader(oldFileName));
+        outs=new BufferedWriter(new FileWriter(tmpFileName));
+
+        BufferedWriter bw=new BufferedWriter(new FileWriter("statement.txt",true));
+        while((data=ins.readLine())!=null)
+        {
+            if(data.contains(nmpass))
+            {
+                l=data.length();
+                data.getChars(40,l-1,fbal,0);
+                String b=String.valueOf(fbal).trim();
+
+                bal=Float.parseFloat(b);
+
+                data.getChars(0,6,user,0);
+                String u=String.valueOf(user).trim();
+                data.getChars(12,18,account,0);
+                String ac=String.valueOf(account).trim();
+
+                try
+                {
+                    System.out.println(Total_Amount);
+
+                    float less=bal-Total_Amount;
+
+               if(bal<less)
+                    {
+                        JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                    }
+                    else
+                    {
+                        bal=bal-Total_Amount;
+                        JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
+                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                        String c=String.valueOf(bal);
+
+                        data=data.replace(b,c);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
+                        String date = sdf.format(new Date());
+
+                        bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+
+                        bw.newLine();
+                        bw.close();
+                    }
+
+                }
+                catch(NumberFormatException eoi)
+                {
+                    JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+                    JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+
+                }
+
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+    }
+    catch(InputMismatchException e)
+    {
+        JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldFile = new File(oldFileName);
+    oldFile.delete();
+
+
+    File newFile = new File(tmpFileName);
+    newFile.renameTo(oldFile);
+
+
+
+}
+
+
+
+
+
+public void waterBill(int galloonused , String nmpass) {
+
+    final double PriceofWater = 50;
+
+    final double DISCOUNT = 0.50;
+
+
+    double totalTogether, totalDiscount, finalTotalForDis;
+
+
+    totalTogether = galloonused * PriceofWater;
+
+    totalDiscount = totalTogether * DISCOUNT;
+    finalTotalForDis = totalTogether - totalDiscount;
+
+    if (totalTogether >= 15) {
+        JOptionPane.showMessageDialog(f,"Your discount is " + (totalDiscount));
+
+        JOptionPane.showMessageDialog(f,"You final total is " + (finalTotalForDis));
+    }//if
+
+    else {
+        JOptionPane.showMessageDialog(f,"Your not entitled to discount this time");
+
+        JOptionPane.showMessageDialog(f,"Your total bill is " + (totalTogether));
+    }//else
+    String oldFileName = "userdetails.txt";
+    String tmpFileName = "out.txt";
+    BufferedReader ins=null;
+    BufferedWriter outs=null;
+    try
+    {
+        ins=new BufferedReader(new FileReader(oldFileName));
+        outs=new BufferedWriter(new FileWriter(tmpFileName));
+
+        BufferedWriter bw=new BufferedWriter(new FileWriter("statement.txt",true));
+        while((data=ins.readLine())!=null)
+        {
+            if(data.contains(nmpass))
+            {
+                l=data.length();
+                data.getChars(40,l-1,fbal,0);
+                String b=String.valueOf(fbal).trim();
+
+                bal=Float.parseFloat(b);
+
+                data.getChars(0,6,user,0);
+                String u=String.valueOf(user).trim();
+                data.getChars(12,18,account,0);
+                String ac=String.valueOf(account).trim();
+
+                try
+                {
+                    System.out.println(totalTogether);
+
+                    float less= (float) (bal-totalTogether);
+
+                    if(bal<less)
+                    {
+                        JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                    }
+                    else
+                    {
+                        bal= (float) (bal-totalTogether);
+                        JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
+                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                        String c=String.valueOf(bal);
+
+                        data=data.replace(b,c);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
+                        String date = sdf.format(new Date());
+
+                        bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+
+                        bw.newLine();
+                        bw.close();
+                    }
+
+                }
+                catch(NumberFormatException eoi)
+                {
+                    JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+                    JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+
+                }
+
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+    }
+    catch(InputMismatchException e)
+    {
+        JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldFile = new File(oldFileName);
+    oldFile.delete();
+
+
+    File newFile = new File(tmpFileName);
+    newFile.renameTo(oldFile);
+
+
+
+
+}
+
+
+public void mobileBill(int textUsed, double callUsed,String nmpass) {
+
+
+    final double TEXTCOST = 0.25;
+    final double CALLCOST = 0.10;
+    final double DISCOUNT = 0.20;
+
+
+    double totalForCall, totalForText, totalTogether, totalDiscount, finalTotalForDis;
+
+
+    totalForCall = callUsed * CALLCOST;
+    totalForText = textUsed * TEXTCOST;
+
+    totalTogether = totalForCall + totalForText;
+
+    totalDiscount = totalTogether * DISCOUNT;
+    finalTotalForDis = totalTogether - totalDiscount;
+
+    if (totalTogether >= 15) {
+        JOptionPane.showMessageDialog(f,"Your discount is " + (totalDiscount));
+
+        JOptionPane.showMessageDialog(f,"You final total is " + (finalTotalForDis));
+    }//if
+
+    else {
+        JOptionPane.showMessageDialog(f,"Your not entitled to discount this time");
+
+        JOptionPane.showMessageDialog(f,"Your total bill is " + (totalTogether));
+    }//else
+
+    String oldFileName = "userdetails.txt";
+    String tmpFileName = "out.txt";
+    BufferedReader ins=null;
+    BufferedWriter outs=null;
+    try
+    {
+        ins=new BufferedReader(new FileReader(oldFileName));
+        outs=new BufferedWriter(new FileWriter(tmpFileName));
+
+        BufferedWriter bw=new BufferedWriter(new FileWriter("statement.txt",true));
+        while((data=ins.readLine())!=null)
+        {
+            if(data.contains(nmpass))
+            {
+                l=data.length();
+                data.getChars(40,l-1,fbal,0);
+                String b=String.valueOf(fbal).trim();
+
+                bal=Float.parseFloat(b);
+
+                data.getChars(0,6,user,0);
+                String u=String.valueOf(user).trim();
+                data.getChars(12,18,account,0);
+                String ac=String.valueOf(account).trim();
+
+                try
+                {
+                    System.out.println(totalTogether);
+
+                    float less= (float) (bal-totalTogether);
+
+                    if(bal<less)
+                    {
+                        JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                    }
+                    else
+                    {
+                        bal= (float) (bal-totalTogether);
+                        JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
+                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                        String c=String.valueOf(bal);
+
+                        data=data.replace(b,c);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
+                        String date = sdf.format(new Date());
+
+                        bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+
+                        bw.newLine();
+                        bw.close();
+                    }
+
+                }
+                catch(NumberFormatException eoi)
+                {
+                    JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+                    JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+
+                }
+
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+    }
+    catch(InputMismatchException e)
+    {
+        JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldFile = new File(oldFileName);
+    oldFile.delete();
+
+
+    File newFile = new File(tmpFileName);
+    newFile.renameTo(oldFile);
+
+
+
+}
+
+
+public void internetBill(double dataconsumed,String nmpass) {
+    final double DATACOST = 10;
+    final double DISCOUNT = 0.20;
+    double totalcost, totalDiscount, finalTotalForDis;
+
+    totalcost = dataconsumed * DATACOST;
+
+    totalDiscount = totalcost * DISCOUNT;
+    finalTotalForDis = totalcost - totalDiscount;
+
+    if (totalcost >= 15) {
+        JOptionPane.showMessageDialog(f,"Your discount is " + (totalDiscount));
+
+        JOptionPane.showMessageDialog(f,"You final total is " + (finalTotalForDis));
+    }//if
+
+    else {
+        JOptionPane.showMessageDialog(f,"Your not entitled to discount this time");
+
+        JOptionPane.showMessageDialog(f,"Your total bill is " + (totalcost));
+    }//else
+
+    String oldFileName = "userdetails.txt";
+    String tmpFileName = "out.txt";
+    BufferedReader ins=null;
+    BufferedWriter outs=null;
+    try
+    {
+        ins=new BufferedReader(new FileReader(oldFileName));
+        outs=new BufferedWriter(new FileWriter(tmpFileName));
+
+        BufferedWriter bw=new BufferedWriter(new FileWriter("statement.txt",true));
+        while((data=ins.readLine())!=null)
+        {
+            if(data.contains(nmpass))
+            {
+                l=data.length();
+                data.getChars(40,l-1,fbal,0);
+                String b=String.valueOf(fbal).trim();
+
+                bal=Float.parseFloat(b);
+
+                data.getChars(0,6,user,0);
+                String u=String.valueOf(user).trim();
+                data.getChars(12,18,account,0);
+                String ac=String.valueOf(account).trim();
+
+                try
+                {
+                    System.out.println(totalcost);
+
+                    float less= (float) (bal-totalcost);
+
+                    if(bal<less)
+                    {
+                        JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                    }
+                    else
+                    {
+                        bal= (float) (bal-totalcost);
+                        JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
+                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
+                        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+                        String c=String.valueOf(bal);
+
+                        data=data.replace(b,c);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
+                        String date = sdf.format(new Date());
+
+                        bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+
+                        bw.newLine();
+                        bw.close();
+                    }
+
+                }
+                catch(NumberFormatException eoi)
+                {
+                    JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+                    JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+
+                }
+
+            }
+
+            outs.write(data);
+            outs.newLine();
+        }
+    }
+    catch(InputMismatchException e)
+    {
+        JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
+        JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
+    }
+    catch(Exception e){}
+    finally
+    {
+        try
+        {
+            if(ins != null)
+                ins.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+        try
+        {
+            if(outs != null)
+                outs.close();
+        }
+        catch (IOException e)
+        {
+            //
+        }
+    }
+
+    File oldFile = new File(oldFileName);
+    oldFile.delete();
+
+
+    File newFile = new File(tmpFileName);
+    newFile.renameTo(oldFile);
+
+//GaneshGanji-996
+
+}
+
+}
 
