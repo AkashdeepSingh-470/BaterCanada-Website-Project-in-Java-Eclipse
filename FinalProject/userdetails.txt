@@ -1,4 +1,2 @@
-jar954 jar371  17082  saving  30000.0
-gan268 gan851  59999  current  40000.0
-ama723 ama199  94895  saving  48000.00
-sir500 sir251  95693  current  59000.00
+jar785 jar295  75645  saving  20000.0
+man941 man399  20460  saving  32000.00
