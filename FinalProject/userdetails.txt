@@ -1,4 +1,4 @@
 jar954 jar371  17082  saving  30000.0
 gan268 gan851  59999  current  40000.0
 ama723 ama199  94895  saving  50000.0
-sir500 sir251  95693  current  60000.0
+sir500 sir251  95693  current  59000.00
