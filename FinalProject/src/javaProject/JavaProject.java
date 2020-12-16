@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 
 /**
- * @author Team 
+ * @author AkashdeepSingh-470 JarmanSinghBatth503 ganeshganji-996 Amanurrahmankhan-551
  *
  */
 public class JavaProject implements ActionListener 
@@ -38,8 +38,8 @@ public class JavaProject implements ActionListener
 	
 	public static void main(String[] args) throws IOException 
 	{
-		/*
-		panel1 = new JPanel();
+		
+		/*panel1 = new JPanel();
 		frame1 = new JFrame();
 		frame1.setSize(350,200);
 		frame1.setLocationRelativeTo(null); 
@@ -75,7 +75,7 @@ public class JavaProject implements ActionListener
 		success.setBounds(110,130,300,25);
 		panel1.add(success);
 		
-		frame1.setVisible(true);		*/
+		frame1.setVisible(true);*/
 		methodTwo(args);
 
 	}
@@ -93,9 +93,12 @@ public class JavaProject implements ActionListener
 				success.setText("Login Successful!");
 				frame1.dispose();
 				JOptionPane.showMessageDialog(null, "congrats");
-				try {
+				try 
+				{
 					methodTwo(null);
-				} catch (IOException e1) {
+				} 
+				catch (IOException e1) 
+				{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -123,24 +126,22 @@ public class JavaProject implements ActionListener
 		User U=new User();
 
 		Update Up=new Update();
-
-
 	              
-		JOptionPane.showMessageDialog(null,"     Welcome to Simulation of a Banking System 	 ");
+		JOptionPane.showMessageDialog(null,"Welcome to Simulation of a Banking System","Welcome User",JOptionPane.INFORMATION_MESSAGE);
 	{
 		
 	    String s = JOptionPane.showInputDialog(null,"Please Enter your choice"
 	    		+"\n1.Create New Account"
 				+"\n2.Existing Account"
 				+"\n3.Delete Account"
-				+"\n4.Exit",JOptionPane.QUESTION_MESSAGE);
+				+"\n4.Exit","Choose one option",JOptionPane.QUESTION_MESSAGE);
 	    int choice=Integer.parseInt(s);
 
 	switch(choice)
 	{
 	    case 1:
 	        U.NewUser();
-	        U.ExistingUser();
+	        
 	        break;
 	    case 2:
 	    	U.ExistingUser();

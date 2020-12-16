@@ -22,28 +22,30 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * @author team
+ * @author AkashdeepSingh-470 JarmanSinghBatth503 ganeshganji-996 Amanurrahmankhan-551
  *
  */
-public class User extends functions {
-	//MohammedSirajuddin-654
+public class User extends functions 
+{
 	public void NewUser()
 	{   
 		String inputDialog3;
-		inputDialog3 = JOptionPane.showInputDialog("Enter the number of Accounts you want to Create: ");
+		inputDialog3 = JOptionPane.showInputDialog(f,"Enter the number of Accounts you want to Create: ","Create User",JOptionPane.INFORMATION_MESSAGE);
+		
 		int namenumber=Integer.parseInt(inputDialog3);
+		
 		System.out.println(namenumber);
+		
 		ArrayList<String> name = new ArrayList<>(namenumber);
-		ArrayList<Integer> contact= new ArrayList<>(namenumber);
+		ArrayList<Integer> contact = new ArrayList<>(namenumber);
 		ArrayList<Double> amnt= new ArrayList<>(namenumber);
-		
-		
 		
 		for(int i=0;i<namenumber;i++) 
 		{
 		int c=0;
-		JOptionPane.showMessageDialog(null, "Enter your details");
-		try {
+		JOptionPane.showMessageDialog(f, "Enter your details","Create User",JOptionPane.INFORMATION_MESSAGE);
+		try 
+		{
 		PrintWriter outs = new PrintWriter(new FileWriter("userdetails.txt", true));
         BufferedWriter bw = new BufferedWriter(new FileWriter("statement.txt", true));
         String name1;
@@ -56,80 +58,69 @@ public class User extends functions {
         JFrame f = new JFrame();
         /*************************************************/
         do
-        {
-        	
+        {	
         c=0;
-        name1= JOptionPane.showInputDialog("Enter your name",JOptionPane.OK_CANCEL_OPTION);
+        name1= JOptionPane.showInputDialog(f,"Enter your name","Create User - Name Details",JOptionPane.OK_OPTION);
         name.add(i,name1);
-        
-        
+
         if (name.get(i).length() < 2) 
         {
-        	JOptionPane.showMessageDialog(f,
-        		    "Name Should be greater than 2-Characters."
-        			+"",
-        		    "Enter a Valid Name.",JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showMessageDialog(f,"Name Should be greater than 2 - Characters",
+        	"Create User - Name Details",JOptionPane.ERROR_MESSAGE);
             c++;
-        } else if (name.get(i).matches(".*?[\\p{Punct}&&[^_]].*") || name.get(i).matches("[a-zA-Z ]*\\d+.*")) 
+        } 
+        else if (name.get(i).matches(".*?[\\p{Punct}&&[^_]].*") || name.get(i).matches("[a-zA-Z ]*\\d+.*")) 
         {
-        	JOptionPane.showMessageDialog(f,
-        		    "-Enter a Valid Name."
-        			+"",
-        		    "Enter a Valid Name.",JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showMessageDialog(f,"Enter a Valid Name",
+        	"Create User - Name Details",JOptionPane.ERROR_MESSAGE);
             
             c++;
         }
-		}while (c == 1);
+		}
+        while (c == 1);
 
         /*************************************************/
         do
         {
-        contact1= JOptionPane.showInputDialog("Enter your contact number",JOptionPane.OK_CANCEL_OPTION);	
-        double contactnumber=Double.parseDouble(contact1);
-        int contactnumber1=(int)contactnumber;
-        contact.add(i, contactnumber1);
-        
-        BufferedReader br = new BufferedReader(new FileReader("userdetails.txt"));
-        
-        if (contact.get(i).equals("(.*)[a-zA-Z]+(.*)") || contact.get(i).equals(".*?[\\p{Punct}&&[^_]].*"))
-        {
+        	c=0;
+        	contact1= JOptionPane.showInputDialog(f,"Enter your contact number","Create User - Contact Details",JOptionPane.OK_OPTION);	
+        	double contactnumber=Double.parseDouble(contact1);
+        	
+            int contactnumber1=(int)contactnumber;
+            contact.add(i, contactnumber1);
             
-            JOptionPane.showMessageDialog(f,
-        		    "-Enter a Valid Contact Number."
-        			+"",
-        		    "Enter a Valid Contact Number.",JOptionPane.ERROR_MESSAGE);
-            c++;
-        } 
-        else if (contact.get(i).SIZE < 15) 
-        {
-            c++;
-            JOptionPane.showMessageDialog(f,
-        		    "-Contact Number Should be of 10-Digits."
-        			+"",
-        		    "Contact Number Should be of 10-Digits.",JOptionPane.ERROR_MESSAGE);
+            BufferedReader br = new BufferedReader(new FileReader("userdetails.txt"));
             
-        } 
+            if (contact1.equals("(.*)[a-zA-Z]+(.*)") || contact.equals(".*?[\\p{Punct}&&[^_]].*"))
+            {
+            	c++;
+                JOptionPane.showMessageDialog(f,"Enter a Valid Contact Number.",
+            	"Create User - Contact Details",JOptionPane.ERROR_MESSAGE);  
+            } 
+           else if (contact1.length() != 10) 
+            {
+                c++;
+                JOptionPane.showMessageDialog(f,"Contact Number Should be of 10-Digits.",
+            	"Create User - Contact Details",JOptionPane.ERROR_MESSAGE);       
+            }
         else 
         {
+        	
             while ((lread = br.readLine()) != null) 
             {
                 c = 0;
-                if (lread.contains(contact.get(i) + " "))
+                if (lread.contains(contact1 + " "))
                 {
                     c++;
-                    JOptionPane.showMessageDialog(f,
-                		    "Contact Number Already Exists."
-                			+"",
-                		    "Contact Number Already Exists.",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(f,"Contact Number Already Exists.",
+                	"Create User",JOptionPane.ERROR_MESSAGE);
                     break;
                 }
             }
         }
         
-        }while (c == 1);
-        
-        /*************************************************/
-        
+        }
+        while (c == 1);      
         
         do
         {
@@ -140,33 +131,23 @@ public class User extends functions {
             
             if (amnt.equals("(.*)[a-zA-Z]+(.*)") || amnt.equals(".*?[\\p{Punct}&&[^_]].*")) 
             {
-
                 c++;
-                JOptionPane.showMessageDialog(f,
-            		    "Enter a Valid Amount."
-            			+"",
-            		    "Enter a Valid Amount.",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(f,"Only Numbers!!",
+            	"Enter a Valid Amount.",JOptionPane.ERROR_MESSAGE);
               
             } 
-            else {
-               
-                if (amnt.get(i)< 1000)
+            else 
+            {
+                if (amnt.get(i)< 100)
                 {
-                	JOptionPane.showMessageDialog(f,
-                		    "Initial Amount Should be greater than or equals to Rs.1000."
-                			+"",
-                		    "Enter a Valid Amount.",JOptionPane.ERROR_MESSAGE);
-                	
-                    
+                	JOptionPane.showMessageDialog(f,"Initial Amount Should be greater than or equals to Rs.100.",
+                	"Enter a Valid Amount.",JOptionPane.ERROR_MESSAGE);                   
                     c++;
                 }
             }
 	
         }while (c == 1);
-        
-        /*************************************************/
-        //MohammedSirajuddin-654
-       
+      
 		do
         {
         	
@@ -174,13 +155,11 @@ public class User extends functions {
         			+ "",JOptionPane.OK_CANCEL_OPTION);
             actype = ac.toLowerCase();
             if (!(actype.equals("saving") || actype.equals("current")))
-            {
-            	
+            {            	
             	JOptionPane.showMessageDialog(f,
             		    "Account Type Should be saving or current"
             			+"",
-            		    "Enter a Valid Account type.",JOptionPane.ERROR_MESSAGE);
-                
+            		    "Enter a Valid Account type.",JOptionPane.ERROR_MESSAGE);                
             }
 
 		}while(!(actype.equals("saving") || actype.equals("current")));
@@ -192,40 +171,28 @@ public class User extends functions {
         
         /*************************************************/
         Random rnd = new Random();
-        String username;
-        String password;
-        username= JOptionPane.showInputDialog("Please enter your new user name:"
-    			+ "Account creation",JOptionPane.OK_CANCEL_OPTION);
-        password=JOptionPane.showInputDialog("Please enter your new password:"
-    			+ "Account creation",JOptionPane.OK_CANCEL_OPTION);
-        
-        
-      /*  char nm[]=new char[6];
-        Random rnd = new Random();
-       
-        String username;
-        
-    
+
+        char nm[]=new char[6];       
+        String username;    
         name.get(i).getChars(0,3,nm,0);
         username = String.valueOf(nm).trim();
-
-        if (username.length() < 2) {
+        if (username.length() < 2) 
+        {
             username = username + (10000 + rnd.nextInt(90000));
-        } else if (username.length() < 3) {
+        } 
+        else if (username.length() < 3) 
+        {
             username = username + (1000 + rnd.nextInt(9000));
-        } else {
+        } 
+        else 
+        {
             username = username + (100 + rnd.nextInt(900));
         }
-
-        if (username.contains(" ")) {
+        if (username.contains(" ")) 
+        {
             username = username.replace(" ", "a");
         }
-
-
-        //contact.getChars(2,6,pin,0);
-        //contact.getChars(5,10,acnumber,0);
-        //pass=String.valueOf(pin).trim();
-        //acnt=String.valueOf(acnumber).trim();
+          
         char ps[]=new char[6];
         String password;
         name.get(i).getChars(3,7,ps,0);
@@ -237,19 +204,10 @@ public class User extends functions {
         } else {
             password = password+ (100 + rnd.nextInt(900));
         }
-
         if (password.contains(" ")) {
             password = password.replace(" ", "a");
         }
-        
-       
-      
-       // String password=JOptionPane.showInputDialog("Please enter your new password:"
-    		//	+ "Account creation",JOptionPane.OK_CANCEL_OPTION);
-        */
-        
 
-        /*************************************************/
         int acnt;
         do {
             acnt = 10000 + rnd.nextInt(90000);
@@ -264,25 +222,13 @@ public class User extends functions {
                 }
             }
             br.close();
-        } while (c == 1);
-        JOptionPane.showMessageDialog(f,
-        	    "Account Created Successfully.",
-        	    "Account Created Successfully.",
-        	    JOptionPane.INFORMATION_MESSAGE);
-
-        JOptionPane.showMessageDialog(f,
-        	    "Username :" + username,
-        	    "Account details for Account"+acnt,
-        	    JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(f,
-        	    "Password :" + password,
-        	    "Account details for Account "+acnt,
-        	    JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(f,
-        	    "Amount :" + amnt.get(i),
-        	    "Account Summary for Account "+acnt,
-        	    JOptionPane.INFORMATION_MESSAGE);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");//MohammedSirajuddin-654
+        } 
+        while (c == 1);
+        
+        JOptionPane.showMessageDialog(f,"Account Created Successfully." +"\nUsername: " +username
+        +"\nPassword: " +password+"\nAccount number: "+acnt +"\nAmount :" + amnt.get(i),
+        "Account Number currently Logged In: "+acnt, JOptionPane.INFORMATION_MESSAGE);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String date = sdf.format(new Date());
 
         /*************************************************/
@@ -303,37 +249,33 @@ public class User extends functions {
         wr.newLine();
         wr.close();
 
+        JOptionPane.showMessageDialog(f,"\nThank You For Banking...",
+            	"Thank you for Visiting",JOptionPane.INFORMATION_MESSAGE);
 
-		}
-		//MohammedSirajuddin-654
-		catch(Exception e)
+    } 
+		catch (InputMismatchException e) 
 		{
-			
-            System.out.println(e);
-		}
-		}
-		}
+    	JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...",
+    	"Incorrect User Choice",JOptionPane.INFORMATION_MESSAGE);
+    } 
+		catch (Exception a) 
+		{
+    }
 
-//MohammedSirajuddin-654
-	
-//ganeshganji-996
+}
+}
 
-	//MohammedSirajuddin-654
-	//MohammedSirajuddin-654
-//ArrayList<String> account = new ArrayList<String>(6);
-private Random scan;
-
+char account[]=new char[6];
 public void ExistingUser()
-{JFrame f = new JFrame();
-	JOptionPane.showMessageDialog(f, "Enter your details");
-   
+{
+	JFrame f = new JFrame();
+
     int count=0;
     String name=null,pass=null,amt=null,cont=null,actyp=null;
-    
-    
-    String uname = JOptionPane.showInputDialog(f,"Enter your NAME",JOptionPane.OK_CANCEL_OPTION);
   
-    String upass = JOptionPane.showInputDialog(f,"Enter your password",JOptionPane.OK_CANCEL_OPTION);
+    String uname = JOptionPane.showInputDialog(f,"Enter your Username","Enter your details to login",JOptionPane.OK_CANCEL_OPTION);
+  
+    String upass = JOptionPane.showInputDialog(f,"Enter your Password","Enter your details to login",JOptionPane.OK_CANCEL_OPTION);
 
     String userpass=uname+" "+upass+" ";
     char cnt=' ';
@@ -343,20 +285,15 @@ public void ExistingUser()
     //ArrayList<String> full = new ArrayList<String>(100);
     try
     {
-
-
         BufferedReader ins=new BufferedReader(new FileReader("userdetails.txt"));
-
 
         while((line=ins.readLine())!=null)
         {
 
             if(line.contains(userpass))
             {
-            	JOptionPane.showMessageDialog(f,
-                	    "Logged In Successfully !.",
-                	    ".",
-                	    JOptionPane.INFORMATION_MESSAGE);
+            	JOptionPane.showMessageDialog(f,"Logged In Successfully !.",
+            	"User: " +uname,JOptionPane.INFORMATION_MESSAGE);
                 
                 BufferedReader nmf=new BufferedReader(new FileReader("name.txt"));
 
@@ -367,23 +304,19 @@ public void ExistingUser()
                     {
                         line2.getChars(13,line2.length(),full,0);
                         fullname=String.valueOf(full).trim();
-                        JOptionPane.showMessageDialog(f,
-                        	    "Welcome :" + fullname,
-                        	    "Account details for Account",
-                        	    JOptionPane.INFORMATION_MESSAGE);
+                        
+                        JOptionPane.showMessageDialog(f,"Welcome :" + fullname,
+                        "Account details ",JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
                 nmf.close();
 
-
-
-                line.getChars(12,18,account,0);
+                line.getChars(13,19,account,0);
                 String ac=String.valueOf(account).trim();
                 String userac=uname+" "+ac;
                 User u=new User();
                 do
-                {	
-                	
+                {	                	
                 	String s = JOptionPane.showInputDialog(f,"Please Enter your choice "
             				+"\n1.Deposit"
             				+"\n2.Withdraw"
@@ -391,12 +324,11 @@ public void ExistingUser()
             				+"\n4.Pay Utilities"
             				+"\n5.Balance Inquiry"
             				+"\n6.Loan Details"
-            				+"\n7.Mini Statement"
-            				+"\n"
-            				+"\n",JOptionPane.QUESTION_MESSAGE);
-            		
-
-                    switch(s) {
+            				+"\n7.Mini Statement",
+            				"Utilities",JOptionPane.INFORMATION_MESSAGE);
+                	
+                    switch(s) 
+                    {
                         case "1":
                             ins.close();
                             u.deposit(userpass);
@@ -409,63 +341,44 @@ public void ExistingUser()
                             ins.close();
                             String acc1,acc2,a1;
                            
-                            acc1= JOptionPane.showInputDialog(f,"Enter a Account number to transfer from",JOptionPane.OK_CANCEL_OPTION);
-                            acc2= JOptionPane.showInputDialog(f,"Enter a Account number to transfer to",JOptionPane.OK_CANCEL_OPTION);
+                            //acc1= JOptionPane.showInputDialog(f,"Enter the Account number to transfer from: ","Transfer Money",JOptionPane.OK_CANCEL_OPTION);
+                            acc2= JOptionPane.showInputDialog(f,"Enter the Account number to transfer to: ","Transfer Money",JOptionPane.OK_CANCEL_OPTION);
                             
-                            a1= JOptionPane.showInputDialog("Enter the amount you want to transfer",JOptionPane.OK_CANCEL_OPTION);
+                            a1= JOptionPane.showInputDialog(f,"Enter the amount you want to transfer: ","Transfer Money",JOptionPane.OK_CANCEL_OPTION);
                             Float a=Float.parseFloat(a1);
-                           
-                           
-
-                            withdrawfrom(acc1, a);
+                            withdrawfrom(userpass, a);
                             depositto(acc2, a);
                             break;
                         case "4":
                             int options;
-                            do {
+                            do 
+                            {
                             	String s1 = JOptionPane.showInputDialog(f,"Please Enter your choice "
                         				+"\n1.Electricity Bill"
-                        				+"\n2.Water Bill"
-                        				+"\n3.Mobile Bill"
-                        				+"\n4.Internet Bill"
-                        				+"\n5.Exit"
-                        				,JOptionPane.QUESTION_MESSAGE);
-                                
+                        				+"\n2.Internet Bill"
+                        				+"\n3.Exit"
+                        				,"Utility Bill Payment",JOptionPane.QUESTION_MESSAGE); 
                             	
-                                options= Integer.parseInt(JOptionPane.showInputDialog(f,"Enter choice [1-5]: ",JOptionPane.OK_CANCEL_OPTION));
-                                switch (options) {
+                                options= Integer.parseInt(s1);
+                                switch (options) 
+                                {
                                     case 1:
-                                     
-                                        int Units = Integer.parseInt(JOptionPane.showInputDialog(f,"Please Enter the Units that you Consumed  :",JOptionPane.OK_CANCEL_OPTION));
+                                        int Units = Integer.parseInt(JOptionPane.showInputDialog(f,"Please Enter the Units that you Consumed:  ","Eclectricity Bill Payment",JOptionPane.OK_CANCEL_OPTION));
                                         u.ElectricityBill1(Units, uname);
                                         break;
 
                                     case 2:
-                                
-                                        int galoonused = Integer.parseInt(JOptionPane.showInputDialog(f," Enter the galoon of water used   : ",JOptionPane.OK_CANCEL_OPTION));
-                                        u.waterBill(galoonused, userpass);
-                                        break;
-
-                                    case 3:
-
-                                        int textUsed = Integer.parseInt(JOptionPane.showInputDialog(f," Please Enter the texts sent   :  :",JOptionPane.OK_CANCEL_OPTION));
-                                        double callUsed = Double.parseDouble(JOptionPane.showInputDialog(f,"Please Enter minutes used  :  ",JOptionPane.OK_CANCEL_OPTION));
-                                        u.mobileBill(textUsed, callUsed, userpass);
-
-                                        break;
-
-                                    case 4:
-                                       
-                                        double dataconsumed = Double.parseDouble(JOptionPane.showInputDialog(f,"Please Enter the data consumed   : :",JOptionPane.OK_CANCEL_OPTION));
+                                        double dataconsumed = Double.parseDouble(JOptionPane.showInputDialog(f,"Please Enter the data consumed:  ","Internet Bill Payment",JOptionPane.OK_CANCEL_OPTION));
                                         u.internetBill(dataconsumed, userpass);
                                         break;
 
-                                    case 5:
+                                    case 3:
                                         u.ExistingUser();
                                         break;
                                 }
-                            } while (options != 6);
-                                   break;
+                            } 
+                            while (options != 6);
+                            break;
                         case "5":
                             ins.close();
                             u.statement(userac);
@@ -475,8 +388,7 @@ public void ExistingUser()
                     		String input;
                     		
                     		input = JOptionPane.showInputDialog(f,"Enter Principal Amount",JOptionPane.OK_CANCEL_OPTION);
-                    		principal = Double.parseDouble(input);
-                    		
+                    		principal = Double.parseDouble(input);                   		
                             
                             int year = Integer.parseInt(JOptionPane.showInputDialog(f,"Enter Time period in years : :",JOptionPane.OK_CANCEL_OPTION));
                             
@@ -487,37 +399,10 @@ public void ExistingUser()
                             u.inquiry(userpass);
                             break;
                         default :
-                        	JOptionPane.showMessageDialog(f,
-                        		    "You Have Entered Wrong Choice"
-                        			+"",
-                        		    "Incorrect Choice",JOptionPane.ERROR_MESSAGE);
-                            
+                        	JOptionPane.showMessageDialog(f,"You Have Entered Wrong Choice",
+                        	"Incorrect User Choice",JOptionPane.ERROR_MESSAGE);                           
                             break;
-
-                    }
-                   // System.out.println("Do you want to continue (Y/N) :");
-                   // cnt=scan.next().charAt(0);
-                     //cnt=JOptionPane.showInputDialog("Do you want to continue (Y/N)");
-                    
-                    
-                  //MohammedSirajuddin-654
-             //String c;
-             //c=JOptionPane.showInputDialog("Do you want to continue (Y/N)");
-
-                
-             
-           //MohammedSirajuddin-654           
-                
-                
-              // while(cnt=='Y' || cnt=='y');
-                
-                //if(cnt!='y' ||cnt!='Y')
-                /*{
-                    System.out.println("-------------------------------------------------------------");
-                    System.out.println("Thank You");
-                    System.out.println("          For Banking...");
-                    System.out.println("-------------------------------------------------------------");
-               */ //}
+                    }                  
                 count=1;
                 break;
                 }while (choice!=8);
@@ -526,10 +411,8 @@ public void ExistingUser()
         }
         if(count==0)
         {
-        	JOptionPane.showMessageDialog(f,
-        		    "You Have Entered Wrong User/Password"
-        			+"",
-        		    "Incorrect Choice",JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showMessageDialog(f,"You Have Entered Wrong User/Password",
+        	"Incorrect User Choice",JOptionPane.ERROR_MESSAGE);
         
         }
 
@@ -540,18 +423,14 @@ public void ExistingUser()
     }
     catch(InputMismatchException e)
     {
-        System.out.println("\nOops !!! You Have Entered Wrong Input...");
-        System.out.println("-------------------------------------------------------------");
+    	JOptionPane.showMessageDialog(f,"You Have Entered Wrong User/Password",
+    	"Incorrect User Choice",JOptionPane.ERROR_MESSAGE);
     }
     catch(Exception e)
-    {
-    	
-    	System.out.println(e);
-    	
-    }
-  
-}//MohammedSirajuddin-654
-//MohammedSirajuddin-654
+    {    	
+    	System.out.println(e);    	
+    } 
+}
 
 public void DeleteAccount()
 {
@@ -559,14 +438,9 @@ public void DeleteAccount()
     String tmpFileName = "out.txt";
 
 
-	String uname = JOptionPane.showInputDialog("Enter User Name");
-   // System.out.println("Enter User Name :");
- //   String uname=scanner.next();
+	String uname = JOptionPane.showInputDialog(f,"Enter your Username: ","Delete Account",JOptionPane.OK_OPTION);
 
-	String upin = JOptionPane.showInputDialog("Enter Your Password");
-   // System.out.println("Enter Your Pin Number :");
-   // int Upin=Integer.parseInt(upin);
- //  String upin=scanner.next();
+	String upin = JOptionPane.showInputDialog(f,"Enter Your Password: ","Delete Account",JOptionPane.OK_OPTION);
 
     String combo=uname+" "+upin+" ";
     String data;
@@ -600,19 +474,12 @@ public void DeleteAccount()
 
         if(cnt==0)
         {
-        	JOptionPane.showMessageDialog(null, " You Have Entered Wrong User/Password(Pin)...");
-            //System.out.println("\nOops !!! You Have Entered Wrong User/Password(Pin)...");
-           // System.out.println("-------------------------------------------------------------");
+        	JOptionPane.showMessageDialog(null, " You Have Entered Wrong User/Password(Pin)...","Delete Account",JOptionPane.OK_OPTION);
         }
         else
         {   JOptionPane.showMessageDialog(null, "Account Deleted Successfully..."
-        		+"\nThank You"
-        		+"\nFor Banking");
-           // System.out.println("\nAccount Deleted Successfully...");
-           // System.out.println("-------------------------------------------------------------");
-           // System.out.println("Thank You");
-           // System.out.println("          For Banking...");
-            //System.out.println("-------------------------------------------------------------");
+        		+"\nThank You For Banking","Delete Account",JOptionPane.OK_OPTION);
+        		System.exit(0);
         }
 
     }
@@ -641,7 +508,6 @@ public void DeleteAccount()
 
     File oldFile = new File(oldFileName);
     oldFile.delete();
-
 
     File newFile = new File(tmpFileName);
     newFile.renameTo(oldFile);
@@ -690,7 +556,6 @@ public void DeleteAccount()
 
     File oldF = new File(old);
     oldF.delete();
-
 
     File newF = new File(temp);
     newF.renameTo(oldF);
@@ -741,19 +606,9 @@ public void DeleteAccount()
     File oldName = new File(oldFile2);
     oldName.delete();
 
-
     File newName = new File(tempFile2);
     newName.renameTo(oldName);
 
-
 }
-
-
-
-  
-//MohammedSirajuddin-654 --final commit
-
-
-
 }
 

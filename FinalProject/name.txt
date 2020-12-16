@@ -1,9 +1,2 @@
-Username:-  Siraj123 Password:- pass123 Account Holders name Siraj
-Username:-  Siraj234 Password:- pass234 Account Holders name Sirajuddin
-Username:-  tom123 Password:- pass456 Account Holders name tom
-Username:-  gan Password:- test Account Holders name Ganesh
-Username:-  aka123 Password:- 9433 Account Holders name akashdeep singh
-Username:-  mp123 Password:- 123 Account Holders name manpreet singh
-Username:-  aman123 Password:- 243242 Account Holders name aman
-Username:-  siraj545 Password:- dasda22 Account Holders name siraj
-Username:-  siraj123 Password:- pass123 Account Holders name Sirajuddin
+Username:-  man598 Password:- man866 Account Holders name manpreet
+Username:-  aka923 Password:- aka734 Account Holders name akashdeep
