@@ -5,19 +5,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class functions {
-    /*
-     * To change this license header, choose License Headers in Project Properties.
-     * To change this template file, choose Tools | Templates
-     * and open the template in the editor.
-     */
-	JFrame f = new JFrame();
+/**
+ * @author AkashdeepSingh-470 JarmanSinghBatth503 MohammedSirajuddin-654 ganeshganji-996 Amanurrahmankhan-551
+ *
+ */
+
+public class functions 
+{
+		JFrame f = new JFrame();
         float damt=0.0f,wamt=0.0f,bal=0.0f;
-   double RATE = 0.035;
+        double RATE = 0.035;
         String data;
 
         char fbal[]=new char[20];
@@ -33,17 +33,14 @@ public class functions {
             BufferedReader ins=null;
             BufferedWriter outs=null;
 
-
             try
             {
-
                 ins=new BufferedReader(new FileReader(oldFileName));
                 outs=new BufferedWriter(new FileWriter(tmpFileName));
 
                 BufferedWriter bw=new BufferedWriter(new FileWriter("statement.txt",true));
                 while((data=ins.readLine())!=null)
                 {
-
                     if(data.contains(nmpass))
                     {
                         l=data.length();
@@ -59,23 +56,20 @@ public class functions {
 
                         try
                         {
-                        	
-                            String dm=JOptionPane.showInputDialog(f,"Please Enter Your Amount :");
-                          //  String dm=scan.next();
+                        	String dm= JOptionPane.showInputDialog(f,"Please Enter Your Amount :","Deposit Amount", JOptionPane.ERROR_MESSAGE);
+                          
                             damt=Float.parseFloat(dm);
 
                             if(damt<100.0f)
                             {
-                                //JOptionPane.showMessageDialog(f,"\nAmount Should be greater than or equals to Rs. 100...");
-                                JOptionPane.showMessageDialog(f,"\nAmount Should be greater than or equals to Rs. 100...");
-                                JOptionPane.showMessageDialog(f,"THANK YOU");
+                            	JOptionPane.showMessageDialog(f,"\nAmount Should be greater than or equals to Rs. 100...",
+                            			"Deposit Error", JOptionPane.ERROR_MESSAGE);
                             }
                             else
                             {
                                 bal=bal+damt;
-                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
-                                JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                                JOptionPane.showMessageDialog(f,"THANK YOU");
+                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully..."+"\nTotal Balance : "+bal,
+                                		"Deposit Transaction Completed", JOptionPane.INFORMATION_MESSAGE);
 
                                 String c=String.valueOf(bal);
                                 data=data.replace(b,c);
@@ -90,21 +84,16 @@ public class functions {
                         }
                         catch(NumberFormatException ioe)
                         {
-                            JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                            JOptionPane.showMessageDialog(f,"THANK YOU");
+                        	JOptionPane.showMessageDialog(f,"\n You Have Entered Wrong Input.","Deposit Error", JOptionPane.ERROR_MESSAGE);
                         }
-
                     }
-
                     outs.write(data);
                     outs.newLine();
-
                 }
             }
             catch(InputMismatchException e)
             {
-                JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                JOptionPane.showMessageDialog(f,"THANK YOU");
+            	JOptionPane.showMessageDialog(f,"\n You Have Entered Wrong Input.","Deposit Error", JOptionPane.ERROR_MESSAGE);
             }
             catch (Exception e)
             {
@@ -131,24 +120,17 @@ public class functions {
                     //
                 }
             }
-            
-          
+ 
           File oldFile = new File(oldFileName);
           oldFile.delete();
 
-
-           File newFile = new File(tmpFileName);
-           newFile.renameTo(oldFile);
-            
-            
-
-
-
+          File newFile = new File(tmpFileName);
+          newFile.renameTo(oldFile);
         }
 
         /***************************************************************/
 
-        public void withdraw(String nmpass)
+public void withdraw(String nmpass)
         {
             String oldFileName = "userdetails.txt";
             String tmpFileName = "out.txt";
@@ -177,27 +159,26 @@ public class functions {
 
                         try
                         {
-                            String wt=JOptionPane.showInputDialog(f,"Enter your Withdrawal Amount :");
-                           // String wt=scan.next();
+                        	String wt=JOptionPane.showInputDialog(f,"Enter your Withdrawal Amount :","Withdraw Amount", JOptionPane.INFORMATION_MESSAGE);
+                           
                             wamt=Float.parseFloat(wt);
                             float less=bal-wamt;
 
                             if(wamt<100.0f)
                             {
-                                JOptionPane.showMessageDialog(f,"\nWithrawal Should be greater than or equals to Rs.100...");
-                                JOptionPane.showMessageDialog(f,"THANK YOU");
+                            	JOptionPane.showMessageDialog(f,"Withrawal Should be greater than or equals to Rs.100...",
+                            			" Withdraw Error", JOptionPane.ERROR_MESSAGE);
                             }
                             else if(less<1000.0f)
                             {
-                                JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
-                                JOptionPane.showMessageDialog(f,"THANK YOU");
+                            	JOptionPane.showMessageDialog(f,"Insufficient Balance...",
+                            			"Withdraw Error", JOptionPane.ERROR_MESSAGE);
                             }
                             else
                             {
                                 bal=bal-wamt;
-                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
-                                JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                                JOptionPane.showMessageDialog(f,"THANK YOU");
+                                JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...",
+                                		" Withdraw Transaction Completed", JOptionPane.INFORMATION_MESSAGE);
                                 String c=String.valueOf(bal);
 
                                 data=data.replace(b,c);
@@ -210,15 +191,12 @@ public class functions {
                                 bw.newLine();
                                 bw.close();
                             }
-
                         }
                         catch(NumberFormatException eoi)
                         {
-                            JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                            JOptionPane.showMessageDialog(f,"THANK YOU");
+                        	JOptionPane.showMessageDialog(f,"\n You Have Entered Wrong Input.","Withdraw Error", JOptionPane.ERROR_MESSAGE);
 
                         }
-
                     }
 
                     outs.write(data);
@@ -227,8 +205,7 @@ public class functions {
             }
             catch(InputMismatchException e)
             {
-                JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                JOptionPane.showMessageDialog(f,"THANK YOU");
+            	JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input..."," Withdraw Error", JOptionPane.ERROR_MESSAGE);
             }
             catch(Exception e){}
             finally
@@ -266,7 +243,7 @@ public class functions {
 
         /**********************************************************************/
 
-        public void inquiry(String nmpass)
+public void inquiry(String nmpass)
         {
             try
             {
@@ -279,8 +256,7 @@ public class functions {
                         data.getChars(30,l-1,fbal,0);
                         String b=String.valueOf(fbal).trim();
                         bal=Float.parseFloat(b);
-                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                        JOptionPane.showMessageDialog(f,"THANK YOU");
+                        JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal,"Total Balance", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     }
                 }
@@ -290,9 +266,8 @@ public class functions {
 
         }
 
-        /*********************************************************************/
-
-        public void statement(String nmacnt)
+ /*********************************************************************/
+public void statement(String nmacnt)
         {
 
             try
@@ -312,26 +287,12 @@ public class functions {
                 }
                 System.out.println("-------------------------------------------------------------");
                 ins.close();
-               /* JOptionPane.showMessageDialog(f,"User |"+" A/c No. |"+" Transactions |"+" Total Bal. "+"|  Date & Time ");
-                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
-                System.out.println();
-                while((data=ins.readLine())!=null)
-                {
-
-                    if(data.contains(nmacnt))
-                    {
-                    	 JOptionPane.showMessageDialog(f,data);
-                      //  System.out.println(data);
-
-                    }
-                }
-                JOptionPane.showMessageDialog(f,"-------------------------------------------------------------");
-                ins.close();*/
+               
             }
             catch(Exception e){}
         }
 
-    public void depositto(String nmpass, float damt)
+public void depositto(String nmpass, float damt)
     {
         String oldFileName = "userdetails.txt";
         String tmpFileName = "out.txt";
@@ -364,13 +325,9 @@ public class functions {
 
                     try
                     {
-
-
                             bal=bal+damt;
-                            JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
-                            JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-
-                            JOptionPane.showMessageDialog(f,"THANK YOU");
+                            JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...",
+                                    "Transfer Money",JOptionPane.INFORMATION_MESSAGE);
 
                             String c=String.valueOf(bal);
                             data=data.replace(b,c);
@@ -385,8 +342,8 @@ public class functions {
                     }
                     catch(NumberFormatException ioe)
                     {
-                        JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                        JOptionPane.showMessageDialog(f,"THANK YOU");
+                    	JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...",
+                                "Transfer Money",JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 }
@@ -398,8 +355,8 @@ public class functions {
         }
         catch(InputMismatchException e)
         {
-            JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-            JOptionPane.showMessageDialog(f,"THANK YOU");
+        	JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...",
+                    "Transfer Money",JOptionPane.INFORMATION_MESSAGE);
         }
         catch (Exception e)
         {
@@ -433,14 +390,11 @@ public class functions {
 
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
-
-
-
     }
 
     /***************************************************************/
 
-    public void withdrawfrom(String nmpass,float wamt)
+public void withdrawfrom(String nmpass,float wamt)
     {
         String oldFileName = "userdetails.txt";
         String tmpFileName = "out.txt";
@@ -469,21 +423,18 @@ public class functions {
 
                     try
                     {
-
                         float less=bal-wamt;
-
-
                       if(less<1000.0f)
                         {
-                            JOptionPane.showMessageDialog(f,"\nInsufficient Balance...");
-                            JOptionPane.showMessageDialog(f,"THANK YOU");
+                            JOptionPane.showMessageDialog(f,"Insufficient Balance...","Transfer Money",JOptionPane.ERROR_MESSAGE);
+                            
                         }
                         else
                         {
                             bal=bal-wamt;
-                            JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully...");
-                            JOptionPane.showMessageDialog(f,"\nTotal Balance : "+bal);
-                            JOptionPane.showMessageDialog(f,"THANK YOU");
+                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully..."+"\nTotal Balance : "+bal,
+                            		"Transfer Money",JOptionPane.ERROR_MESSAGE);
+                            
                             String c=String.valueOf(bal);
 
                             data=data.replace(b,c);
@@ -500,11 +451,9 @@ public class functions {
                     }
                     catch(NumberFormatException eoi)
                     {
-                        JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-                       // JOptionPane.showMessageDialog(f,"THANK YOU");
-
+                        JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+                        		"Transfer Money",JOptionPane.ERROR_MESSAGE); 
                     }
-
                 }
 
                 outs.write(data);
@@ -513,8 +462,8 @@ public class functions {
         }
         catch(InputMismatchException e)
         {
-            JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...");
-           // JOptionPane.showMessageDialog(f,"THANK YOU");
+            JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+            		"Transfer Money",JOptionPane.ERROR_MESSAGE);
         }
         catch(Exception e){}
         finally
@@ -542,23 +491,22 @@ public class functions {
         File oldFile = new File(oldFileName);
         oldFile.delete();
 
-
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
 
-
-
     }
 
-    public void loandetails(double principal, int year) {
+public void loandetails(double principal, int year) {
         RATE = (RATE / 100) / 12;
         year = year * 12;
         double p = (principal * RATE) / (1 - Math.pow(1 + RATE, -year));
         //
-        JOptionPane.showMessageDialog(f,"EMI : " + p);
+        JOptionPane.showMessageDialog(f,"EMI : " + p,
+        		"Loan Calculator",JOptionPane.ERROR_MESSAGE);
     } 
     
-    public void ElectricityBill1(int Units,String nmpass) {
+public void ElectricityBill1(int Units,String nmpass) 
+    {
 
         float Amount, Sur_Charge, Total_Amount;
 
@@ -584,7 +532,9 @@ public class functions {
         }
 
         Total_Amount = Amount + Sur_Charge;
-        System.out.println("\n Electricity Bill  =  " + Total_Amount);
+        JOptionPane.showMessageDialog(f,"Electricity Bill  =  " + Total_Amount,
+        	    "Electricity Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        
         String oldFileName = "userdetails.txt";
         String tmpFileName = "out.txt";
         BufferedReader ins=null;
@@ -607,7 +557,7 @@ public class functions {
 
                     data.getChars(0,6,user,0);
                     String u=String.valueOf(user).trim();
-                    data.getChars(12,18,account,0);
+                    data.getChars(15,21,account,0);
                     String ac=String.valueOf(account).trim();
 
                     try
@@ -617,18 +567,14 @@ public class functions {
                         float less=bal-Total_Amount;
 
                    if(bal<less)
-                        {    JOptionPane.showMessageDialog(f,"Insufficient Balance...");
-                            //System.out.println("\nInsufficient Balance...");
-                            //System.out.println("-------------------------------------------------------------");
+                        {    JOptionPane.showMessageDialog(f,"Insufficient Balance...",
+                                "Electricity Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
                             bal=bal-Total_Amount;
-                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully...");
-                           // System.out.println("\nTransaction Completed Successfully...");
-                            JOptionPane.showMessageDialog(f,"Total Balance : "+bal);
-                            //System.out.println("\nTotal Balance : "+bal);
-                            //System.out.println("-------------------------------------------------------------");
+                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully..."+"\nTotal Balance : "+bal,
+                                    "Electricity Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                             String c=String.valueOf(bal);
 
                             data=data.replace(b,c);
@@ -636,7 +582,7 @@ public class functions {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
                             String date = sdf.format(new Date());
 
-                            bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+                            bw.write(u+" "+ac+"   "+Total_Amount+"  withdraw"+"   "+bal+"   "+date);
 
                             bw.newLine();
                             bw.close();
@@ -645,10 +591,8 @@ public class functions {
                     }
                     catch(NumberFormatException eoi)
                     {    
-                    	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-                        //System.out.println("\nOops !!! You Have Entered Wrong Input...");
-                        //System.out.println("-------------------------------------------------------------");
-
+                    	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+                    			"Electricity Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 }
@@ -659,9 +603,8 @@ public class functions {
         }
         catch(InputMismatchException e)
         {   
-        	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-           // System.out.println("\nOops !!! You Have Entered Wrong Input...");
-            //System.out.println("-------------------------------------------------------------");
+        	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+        			"Electricity Bill Payment",JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception e){}
         finally
@@ -692,21 +635,13 @@ public class functions {
 
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
-
-
-
     }
 
-
-
-
-
-    public void waterBill(int galloonused , String nmpass) {
-
+public void waterBill(int galloonused , String nmpass) 
+{
         final double PriceofWater = 50;
 
         final double DISCOUNT = 0.50;
-
 
         double totalTogether, totalDiscount, finalTotalForDis;
 
@@ -717,18 +652,18 @@ public class functions {
         finalTotalForDis = totalTogether - totalDiscount;
 
         if (totalTogether >= 15) {
-            System.out.println("Your discount is " + (totalDiscount));
+        	JOptionPane.showMessageDialog(f,"Your discount is " + totalDiscount
+        	        +"\nYou Bill Total is " + finalTotalForDis,
+        	        "Water Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        }
 
-            System.out.println("You final total is " + (finalTotalForDis));
-        }//if
-
-        else {
-        	 JOptionPane.showMessageDialog(f,"Your not entitled to discount this time");
-            //System.out.println("Your not entitled to discount this time");
-            
-            JOptionPane.showMessageDialog(f,"Your total bill is " + (totalTogether));
-           // System.out.println("Your total bill is " + (totalTogether));
-        }//else
+        else 
+        {
+        	JOptionPane.showMessageDialog(f,"You are not entitled to discount this time."
+        	        +"\nYour Bill Total is " + totalTogether,
+        	        "Water Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         String oldFileName = "userdetails.txt";
         String tmpFileName = "out.txt";
         BufferedReader ins=null;
@@ -751,7 +686,7 @@ public class functions {
 
                     data.getChars(0,6,user,0);
                     String u=String.valueOf(user).trim();
-                    data.getChars(12,18,account,0);
+                    data.getChars(15,21,account,0);
                     String ac=String.valueOf(account).trim();
 
                     try
@@ -762,18 +697,14 @@ public class functions {
 
                         if(bal<less)
                         {    
-                        	JOptionPane.showMessageDialog(f,"Insufficient Balance...");
-                           // System.out.println("\nInsufficient Balance...");
-                            //System.out.println("-------------------------------------------------------------");
+                        	JOptionPane.showMessageDialog(f,"Insufficient Balance...",
+                        			"Water Bill Payment",JOptionPane.ERROR_MESSAGE);
                         }
                         else
                         {
                             bal= (float) (bal-totalTogether);
-                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully...");
-                           // System.out.println("\nTransaction Completed Successfully...");
-                            JOptionPane.showMessageDialog(f,"Total Balance : "+bal);
-                            //System.out.println("\nTotal Balance : "+bal);
-                            //System.out.println("-------------------------------------------------------------");
+                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully..."+"Total Balance : "+bal,
+                            		"Water Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                             String c=String.valueOf(bal);
 
                             data=data.replace(b,c);
@@ -781,7 +712,7 @@ public class functions {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
                             String date = sdf.format(new Date());
 
-                            bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+                            bw.write(u+" "+ac+"   "+totalTogether+"  withdraw"+"   "+bal+"   "+date);
 
                             bw.newLine();
                             bw.close();
@@ -790,12 +721,9 @@ public class functions {
                     }
                     catch(NumberFormatException eoi)
                     {    
-                    	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-                       // System.out.println("\nOops !!! You Have Entered Wrong Input...");
-                        //System.out.println("-------------------------------------------------------------");
-
+                    	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+                    			"Water Bill Payment",JOptionPane.ERROR_MESSAGE);
                     }
-
                 }
 
                 outs.write(data);
@@ -804,9 +732,8 @@ public class functions {
         }
         catch(InputMismatchException e)
         {   
-        	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-           // System.out.println("\nOops !!! You Have Entered Wrong Input...");
-           // System.out.println("-------------------------------------------------------------");
+        	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+        			"Water Bill Payment",JOptionPane.ERROR_MESSAGE);
         }
         catch(Exception e){}
         finally
@@ -837,14 +764,10 @@ public class functions {
 
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
-
-
-
-
     }
 
 
-    public void mobileBill(int textUsed, double callUsed,String nmpass) {
+public void mobileBill(int textUsed, double callUsed,String nmpass) {
 
 
         final double TEXTCOST = 0.25;
@@ -864,20 +787,17 @@ public class functions {
         finalTotalForDis = totalTogether - totalDiscount;
 
         if (totalTogether >= 15) {
-        	 JOptionPane.showMessageDialog(f,"Your discount is " + (totalDiscount));
-           // System.out.println("Your discount is " + (totalDiscount));
-            JOptionPane.showMessageDialog(f,"You final total is " + (finalTotalForDis));
-            //System.out.println("You final total is " + (finalTotalForDis));
-        }//if
+        	JOptionPane.showMessageDialog(f,"Your discount is " + totalDiscount
+        	        +"\nYou Bill Total is " + finalTotalForDis,
+        	        "Mobile Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        }
 
-        else {
-        	 JOptionPane.showMessageDialog(f,"Your not entitled to discount this time");
-          //  System.out.println("Your not entitled to discount this time");
-           
-            JOptionPane.showMessageDialog(f,"Your total bill is " + (totalTogether));
-
-           // System.out.println("Your total bill is " + (totalTogether));
-        }//else
+        else 
+        {
+        	JOptionPane.showMessageDialog(f,"You are not entitled to discount this time."
+        	        +"\nYour Bill Total is " + totalTogether,
+        	        "Mobile Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        }
 
         String oldFileName = "userdetails.txt";
         String tmpFileName = "out.txt";
@@ -901,7 +821,7 @@ public class functions {
 
                     data.getChars(0,6,user,0);
                     String u=String.valueOf(user).trim();
-                    data.getChars(12,18,account,0);
+                    data.getChars(15,21,account,0);
                     String ac=String.valueOf(account).trim();
 
                     try
@@ -912,18 +832,14 @@ public class functions {
 
                         if(bal<less)
                         {    
-                        	 JOptionPane.showMessageDialog(f,"Insufficient Balance...");
-                           //System.out.println("\nInsufficient Balance...");
-                            //System.out.println("-------------------------------------------------------------");
+                        	 JOptionPane.showMessageDialog(f,"Insufficient Balance...",
+                        			 "Mobile Bill Payment",JOptionPane.ERROR_MESSAGE);
                         }
                         else
                         {
                             bal= (float) (bal-totalTogether);
-                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully...");
-                        //    System.out.println("\nTransaction Completed Successfully...");
-                            JOptionPane.showMessageDialog(f,"Total Balance : "+bal);
-                          //  System.out.println("\nTotal Balance : "+bal);
-                            //System.out.println("-------------------------------------------------------------");
+                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully..."+"Total Balance : "+bal,
+                            		"Mobile Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                             String c=String.valueOf(bal);
 
                             data=data.replace(b,c);
@@ -931,7 +847,7 @@ public class functions {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
                             String date = sdf.format(new Date());
 
-                            bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+                            bw.write(u+" "+ac+"   "+totalTogether+"  withdraw"+"   "+bal+"   "+date);
 
                             bw.newLine();
                             bw.close();
@@ -940,9 +856,8 @@ public class functions {
                     }
                     catch(NumberFormatException eoi)
                     {    
-                    	 JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-                       // System.out.println("\nOops !!! You Have Entered Wrong Input...");
-                       // System.out.println("-------------------------------------------------------------");
+                    	 JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+                    			 "Mobile Bill Payment",JOptionPane.ERROR_MESSAGE);
 
                     }
 
@@ -954,9 +869,8 @@ public class functions {
         }
         catch(InputMismatchException e)
         {    
-        	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-           // System.out.println("\nOops !!! You Have Entered Wrong Input...");
-            //System.out.println("-------------------------------------------------------------");
+        	JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...",
+        			"Mobile Bill Payment",JOptionPane.ERROR_MESSAGE);
         }
         catch(Exception e){}
         finally
@@ -984,16 +898,12 @@ public class functions {
         File oldFile = new File(oldFileName);
         oldFile.delete();
 
-
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
-
-
-
     }
 
-
-    public void internetBill(double dataconsumed,String nmpass) {
+public void internetBill(double dataconsumed,String nmpass)
+{
         final double DATACOST = 10;
         final double DISCOUNT = 0.20;
         double totalcost, totalDiscount, finalTotalForDis;
@@ -1004,19 +914,17 @@ public class functions {
         finalTotalForDis = totalcost - totalDiscount;
 
         if (totalcost >= 15) {
-        	 JOptionPane.showMessageDialog(f,"Your discount is " + (totalDiscount));
-            //System.out.println("Your discount is " + (totalDiscount));
-             
-            JOptionPane.showMessageDialog(f,"You final total is " + (finalTotalForDis));
-           // System.out.println("You final total is " + (finalTotalForDis));
-        }//if
+        	JOptionPane.showMessageDialog(f,"Your discount is " + totalDiscount
+        	        +"\nYou Bill Total is " + finalTotalForDis,
+        	        "Internet Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        }
 
-        else {
-        	 JOptionPane.showMessageDialog(f,"Your not entitled to discount this time");
-          //  System.out.println("Your not entitled to discount this time");
-            JOptionPane.showMessageDialog(f,"Your total bill is " + (totalcost));
-           // System.out.println("Your total bill is " + (totalcost));
-        }//else
+        else 
+        {
+        	JOptionPane.showMessageDialog(f,"You are not entitled to discount this time."
+        	        +"\nYour Bill Total is " + totalcost,
+        	        "Internet Bill Payment",JOptionPane.INFORMATION_MESSAGE);
+        }
 
         String oldFileName = "userdetails.txt";
         String tmpFileName = "out.txt";
@@ -1050,18 +958,15 @@ public class functions {
                         float less= (float) (bal-totalcost);
 
                         if(bal<less)
-                        {     JOptionPane.showMessageDialog(f,"Insufficient Balance...");
-                            //System.out.println("\nInsufficient Balance...");
-                            //System.out.println("-------------------------------------------------------------");
+                        {     
+                        	JOptionPane.showMessageDialog(f,"\nInsufficient Balance...",
+                                "Internet Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
                             bal= (float) (bal-totalcost);
-                            JOptionPane.showMessageDialog(f,"Transaction Completed Successfully...");
-                            //System.out.println("\nTransaction Completed Successfully...");
-                            JOptionPane.showMessageDialog(f,"Total Balance : "+bal);
-                            //System.out.println("\nTotal Balance : "+bal);
-                            //System.out.println("-------------------------------------------------------------");
+                            JOptionPane.showMessageDialog(f,"\nTransaction Completed Successfully..."+"\nTotal Balance : "+bal,
+                                    "Internet Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                             String c=String.valueOf(bal);
 
                             data=data.replace(b,c);
@@ -1069,7 +974,7 @@ public class functions {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
                             String date = sdf.format(new Date());
 
-                            bw.write(u+" "+ac+"   "+wamt+"  withdraw"+"   "+bal+"   "+date);
+                            bw.write(u+" "+ac+"   "+totalcost+"  withdraw"+"   "+bal+"   "+date);
 
                             bw.newLine();
                             bw.close();
@@ -1078,10 +983,8 @@ public class functions {
                     }
                     catch(NumberFormatException eoi)
                     {
-                    	 JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-                       // System.out.println("\nOops !!! You Have Entered Wrong Input...");
-                        //System.out.println("-------------------------------------------------------------");
-
+                    	JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...",
+                                "Internet Bill Payment",JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 }
@@ -1092,9 +995,8 @@ public class functions {
         }
         catch(InputMismatchException e)
         {    
-        	 JOptionPane.showMessageDialog(f,"Oops !!! You Have Entered Wrong Input...");
-            //System.out.println("\nOops !!! You Have Entered Wrong Input...");
-            //System.out.println("-------------------------------------------------------------");
+        	JOptionPane.showMessageDialog(f,"\nOops !!! You Have Entered Wrong Input...",
+        	        "Internet Bill Payment",JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception e){}
         finally
@@ -1122,21 +1024,8 @@ public class functions {
         File oldFile = new File(oldFileName);
         oldFile.delete();
 
-
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
 
-
-
     }
-
     }
-
-
-
-
-
-
-
-
-

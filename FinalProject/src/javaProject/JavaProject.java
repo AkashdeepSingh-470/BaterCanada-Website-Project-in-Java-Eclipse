@@ -15,9 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
 /**
- * @author Team 
+ * @author AkashdeepSingh-470 JarmanSinghBatth503 MohammedSirajuddin-654 ganeshganji-996 Amanurrahmankhan-551
  *
  */
 public class JavaProject implements ActionListener 
@@ -38,7 +37,6 @@ public class JavaProject implements ActionListener
 	
 	public static void main(String[] args) throws IOException 
 	{
-		/*
 		panel1 = new JPanel();
 		frame1 = new JFrame();
 		frame1.setSize(350,200);
@@ -75,8 +73,7 @@ public class JavaProject implements ActionListener
 		success.setBounds(110,130,300,25);
 		panel1.add(success);
 		
-		frame1.setVisible(true);		*/
-		methodTwo(args);
+		frame1.setVisible(true);
 
 	}
 
@@ -92,11 +89,12 @@ public class JavaProject implements ActionListener
 			{
 				success.setText("Login Successful!");
 				frame1.dispose();
-				JOptionPane.showMessageDialog(null, "congrats");
+				JOptionPane.showMessageDialog(null, "Admin Access","Admin Logged In",JOptionPane.INFORMATION_MESSAGE);
 				try {
 					methodTwo(null);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} 
+				catch (IOException e1) 
+				{
 					e1.printStackTrace();
 				}
 			}
@@ -110,37 +108,33 @@ public class JavaProject implements ActionListener
 			 }
 			 else 
 			 {
-				 //System.out.println(attempts);
 				frame1.dispose();
-				JOptionPane.showMessageDialog(null, "You have exceeded the given attempts"+"\nPlease come back after some time.");		 
+				JOptionPane.showMessageDialog(null, "You have exceeded the given attempts"+"\nPlease come back after some time.",
+				"User Login",JOptionPane.ERROR_MESSAGE);
 		 }	 
 		}	
 	}
-	
 	
 	public static void methodTwo(String[] args) throws IOException 
 	{
 		User U=new User();
 
-		Update Up=new Update();
-
-
-	              
-		JOptionPane.showMessageDialog(null,"     Welcome to Simulation of a Banking System 	 ");
+		JOptionPane.showMessageDialog(null,"Welcome to Simulation of a Banking System",
+		"Admin Logged In",JOptionPane.INFORMATION_MESSAGE);
 	{
 		
 	    String s = JOptionPane.showInputDialog(null,"Please Enter your choice"
 	    		+"\n1.Create New Account"
 				+"\n2.Existing Account"
 				+"\n3.Delete Account"
-				+"\n4.Exit",JOptionPane.QUESTION_MESSAGE);
+				+"\n4.Exit","Choose one option",JOptionPane.QUESTION_MESSAGE);
 	    int choice=Integer.parseInt(s);
 
 	switch(choice)
 	{
 	    case 1:
-	        U.NewUser();
-	       // U.ExistingUser();
+	       U.NewUser();
+	       U.ExistingUser();
 	        break;
 	    case 2:
 	    	U.ExistingUser();
@@ -149,11 +143,12 @@ public class JavaProject implements ActionListener
 	        U.DeleteAccount();
 	        break;
 	    case 4:
-	  	  JOptionPane.showMessageDialog(null,"Goodbye");
+	  	  JOptionPane.showMessageDialog(null,"Goodbye","Quit",JOptionPane.INFORMATION_MESSAGE);
 	  	  System.exit(0);
 	    default:
 	    
-	    int result = JOptionPane.showConfirmDialog(null,"You Have Entered Wrong Choice"+"\nDo you want to continue?","Confirmation",JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+	    int result = JOptionPane.showConfirmDialog(null,"You Have Entered Wrong Choice"+"\nDo you want to continue?",
+	    			 "Confirmation",JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
 	    if(result == JOptionPane.YES_OPTION)
 	    {
 	    	main(args);
