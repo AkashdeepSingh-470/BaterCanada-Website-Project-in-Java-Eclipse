@@ -140,7 +140,7 @@ public class JavaProject implements ActionListener
 	{
 	    case 1:
 	        U.NewUser();
-	        U.ExistingUser();
+	       // U.ExistingUser();
 	        break;
 	    case 2:
 	    	U.ExistingUser();
