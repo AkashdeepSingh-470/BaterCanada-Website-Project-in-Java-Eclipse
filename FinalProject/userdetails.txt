@@ -1,5 +1,1 @@
-jar785 jar295  75645  saving  20000.0
-man941 man399  20460  saving  32000.00
-Aka226 Aka284  79683  saving  6000.00
-Man864 Man520  27377  current  5000.00
-Yuv278 Yuv563  80312  saving  9000.00
+jar766 jar660  63095  saving  2423434434  32000.00

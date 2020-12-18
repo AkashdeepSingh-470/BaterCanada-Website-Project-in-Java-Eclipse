@@ -81,9 +81,9 @@ public class JavaProject implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		String user = userText1.getText();
-		System.out.println(user);
+		//System.out.println(user);
 		String password = passwordText.getText();
-		System.out.println(password);
+		//System.out.println(password);
 
 			if (user.equals(userName) && password.equals(userpassword))
 			{
@@ -100,17 +100,17 @@ public class JavaProject implements ActionListener
 			}
 		 else
 		 { 
-			 if(attempts<=2)
+			 if(attempts<=1)
 			 {
 				 success.setText("Login Unsuccessful!");
 				 attempts++;
-				 System.out.println(attempts);
+				 //System.out.println(attempts);
 			 }
 			 else 
 			 {
 				frame1.dispose();
 				JOptionPane.showMessageDialog(null, "You have exceeded the given attempts"+"\nPlease come back after some time.",
-				"User Login",JOptionPane.ERROR_MESSAGE);
+				"Admin Login",JOptionPane.ERROR_MESSAGE);
 		 }	 
 		}	
 	}
@@ -118,7 +118,7 @@ public class JavaProject implements ActionListener
 	public static void methodTwo(String[] args) throws IOException 
 	{
 		User U=new User();
-
+		update Up= new update();
 		JOptionPane.showMessageDialog(null,"Welcome to Simulation of a Banking System",
 		"Admin Logged In",JOptionPane.INFORMATION_MESSAGE);
 	{
@@ -127,14 +127,14 @@ public class JavaProject implements ActionListener
 	    		+"\n1.Create New Account"
 				+"\n2.Existing Account"
 				+"\n3.Delete Account"
-				+"\n4.Exit","Choose one option",JOptionPane.QUESTION_MESSAGE);
+				+"\n4.Update"
+				+"\n5.Exit","Choose one option",JOptionPane.QUESTION_MESSAGE);
 	    int choice=Integer.parseInt(s);
 
 	switch(choice)
 	{
 	    case 1:
 	       U.NewUser();
-	       U.ExistingUser();
 	        break;
 	    case 2:
 	    	U.ExistingUser();
@@ -142,7 +142,11 @@ public class JavaProject implements ActionListener
 	    case 3:
 	        U.DeleteAccount();
 	        break;
+	        
 	    case 4:
+	    	Up. UpdateUser();
+	    	
+	    case 5:
 	  	  JOptionPane.showMessageDialog(null,"Goodbye","Quit",JOptionPane.INFORMATION_MESSAGE);
 	  	  System.exit(0);
 	    default:
